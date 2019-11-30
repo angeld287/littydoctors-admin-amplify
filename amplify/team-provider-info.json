@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "administrationwebpag-dev-20191123091217-authRole",
+            "UnauthRoleArn": "arn:aws:iam::846928963573:role/administrationwebpag-dev-20191123091217-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::846928963573:role/administrationwebpag-dev-20191123091217-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "administrationwebpag-dev-20191123091217-deployment",
+            "UnauthRoleName": "administrationwebpag-dev-20191123091217-unauthRole",
+            "StackName": "administrationwebpag-dev-20191123091217",
+            "StackId": "arn:aws:cloudformation:us-east-1:846928963573:stack/administrationwebpag-dev-20191123091217/e0241810-0df2-11ea-82ad-0a39c55408a9"
+        }
+    }
+}
