@@ -1,27 +1,3 @@
-export const listModules = `query ListModules(
-  $filter: ModelModuleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listModules(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      fields {
-        items {
-          id
-          name
-        }
-        nextToken
-      }
-      image
-      description
-    }
-    nextToken
-  }
-}
-`;
-
 export const listConsultingRoomsSecretary = `query ListConsultingRooms(
   $filter: ModelConsultingRoomFilterInput
   $limit: Int
