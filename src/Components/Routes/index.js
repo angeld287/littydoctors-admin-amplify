@@ -12,6 +12,10 @@ import Allergies from '../Allergies';
 import NewAllergy from '../Allergies/newAllergy';
 import EditAllergy from '../Allergies/editAllergy';
 
+import Diseases from '../Diseases';
+import NewDisease from '../Diseases/newDisease';
+import EditDisease from '../Diseases/editDisease';
+
 export const Routes = ({ childProps }) => (
   <Switch>
     <Route exact path="/" render={() => <Home/>} />
@@ -19,6 +23,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/allergies" render={Allergies} props={childProps} />
     <ProtectedRouteAdmin exact path="/allergies/new" render={NewAllergy} props={childProps} />
     <ProtectedRouteAdmin exact path="/allergies/:id/edit" render={EditAllergy} props={childProps} />
+    <ProtectedRouteAdmin exact path="/diseases" render={Diseases} props={childProps} />
+    <ProtectedRouteAdmin exact path="/diseases/new" render={NewDisease} props={childProps} />
+    <ProtectedRouteAdmin exact path="/diseases/:id/edit" render={EditDisease} props={childProps} />
   </Switch>
 );
 

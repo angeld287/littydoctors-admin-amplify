@@ -17,8 +17,8 @@ export default class HeaderLinks extends Component {
     window.location.href = "/signin";
   }
 
-  redirectAllergies = () => {
-    window.location.href = "/allergies"
+  redirectTo = (to) => {
+    window.location.href = "/"+to;
   }
 
   redirectHome = () => {
@@ -29,7 +29,8 @@ export default class HeaderLinks extends Component {
     return (
         <ul style={{listStyle: 'none', padding: 0, margin: 0}}>
           <li style={{display: 'inline'}}><button onClick={this.redirectHome}>Home</button></li>
-          {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={this.redirectAllergies}>Alergias</button></li>}
+          {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('allergies');}}>Alergias</button></li>}
+          {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('diseases')}}>Enfermedades</button></li>}
           {!this.props.childProps.isLoggedIn && <li style={{display: 'inline'}}><button onClick={this.redirectSignIn}>LogIn</button></li>}
           {this.props.childProps.isLoggedIn && <li style={{display: 'inline'}}><button onClick={this.handlesignOut}>Logout</button></li>}
         </ul>
