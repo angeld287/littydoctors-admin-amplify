@@ -25,9 +25,14 @@ import NewMedicalAnalysis from '../MedicalAnalysis/newMedicalAnalysis';
 import EditMedicalAnalysis from '../MedicalAnalysis/editMedicalAnalysis';
 
 //surgicalinterventions
-import SurgicalIntervention from '../SurgicalInterventions/';
+import SurgicalIntervention from '../SurgicalInterventions';
 import NewSurgicalIntervention from '../SurgicalInterventions/newSurgicalIntervention';
 import EditSurgicalIntervention from '../SurgicalInterventions/editSurgicalIntervention';
+
+//medicines
+import Medicines from '../Medicines';
+import NewMedicine from '../Medicines/newMedicine';
+import EditMedicine from '../Medicines/editMedicine';
 
 
 export const Routes = ({ childProps }) => (
@@ -46,6 +51,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/surgicalinterventions" render={SurgicalIntervention} props={childProps} />
     <ProtectedRouteAdmin exact path="/surgicalinterventions/new" render={NewSurgicalIntervention} props={childProps} />
     <ProtectedRouteAdmin exact path="/surgicalinterventions/:id/edit" render={EditSurgicalIntervention} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicines" render={Medicines} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicines/new" render={NewMedicine} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicines/:id/edit" render={EditMedicine} props={childProps} />
   </Switch>
 );
 
