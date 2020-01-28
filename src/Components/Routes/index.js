@@ -6,26 +6,19 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import Modules from './../Modules';
 import Home from './../Home';
 import AuthComponent from './../Authentication/AuthComponent';
+import Allergies from '../Allergies';
+import NewAllergy from '../Allergies/newAllergy';
+import EditAllergy from '../Allergies/editAllergy';
 
 export const Routes = ({ childProps }) => (
   <Switch>
     <Route exact path="/" render={() => <Home/>} />
-    <ProppedRoute exact path="/testmodule" render={Modules} props={childProps}/>
-    <ProppedRoute
-      exact
-      path="/signin"
-      render={AuthComponent}
-      props={childProps}
-    />
-    <ProtectedRouteAdmin
-      exact
-      path="/modules"
-      render={Modules}
-      props={childProps}
-    />
+    <ProppedRoute exact path="/signin" render={AuthComponent} props={childProps} />
+    <ProtectedRouteAdmin exact path="/allergies" render={Allergies} props={childProps} />
+    <ProtectedRouteAdmin exact path="/allergies/new" render={NewAllergy} props={childProps} />
+    <ProtectedRouteAdmin exact path="/allergies/:id/edit" render={EditAllergy} props={childProps} />
   </Switch>
 );
 

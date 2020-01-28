@@ -17,8 +17,8 @@ export default class HeaderLinks extends Component {
     window.location.href = "/signin";
   }
 
-  redirectModules = () => {
-    window.location.href = "/modules"
+  redirectAllergies = () => {
+    window.location.href = "/allergies"
   }
 
   redirectHome = () => {
@@ -27,11 +27,11 @@ export default class HeaderLinks extends Component {
 
   render() {
     return (
-        <ul>
-          <li><button onClick={this.redirectHome}>Home</button></li>
-          {this.props.childProps.state.user_roll === 'admin' && <li><button onClick={this.redirectModules}>Modules</button></li>}
-          {!this.props.childProps.isLoggedIn && <li><button onClick={this.redirectSignIn}>LogIn</button></li>}
-          {this.props.childProps.isLoggedIn && <li><button onClick={this.handlesignOut}>Logout</button></li>}
+        <ul style={{listStyle: 'none', padding: 0, margin: 0}}>
+          <li style={{display: 'inline'}}><button onClick={this.redirectHome}>Home</button></li>
+          {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={this.redirectAllergies}>Alergias</button></li>}
+          {!this.props.childProps.isLoggedIn && <li style={{display: 'inline'}}><button onClick={this.redirectSignIn}>LogIn</button></li>}
+          {this.props.childProps.isLoggedIn && <li style={{display: 'inline'}}><button onClick={this.handlesignOut}>Logout</button></li>}
         </ul>
     );
   }
