@@ -2157,6 +2157,7 @@ export const createFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -2185,6 +2186,7 @@ export const updateFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -2213,6 +2215,7 @@ export const deleteFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -2229,6 +2232,7 @@ export const createDisease = /* GraphQL */ `
     createDisease(input: $input, condition: $condition) {
       id
       name
+      description
       familyDetails {
         items {
           id
@@ -2247,6 +2251,7 @@ export const updateDisease = /* GraphQL */ `
     updateDisease(input: $input, condition: $condition) {
       id
       name
+      description
       familyDetails {
         items {
           id
@@ -2265,6 +2270,7 @@ export const deleteDisease = /* GraphQL */ `
     deleteDisease(input: $input, condition: $condition) {
       id
       name
+      description
       familyDetails {
         items {
           id

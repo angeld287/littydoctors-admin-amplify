@@ -1928,6 +1928,7 @@ export const onCreateFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -1953,6 +1954,7 @@ export const onUpdateFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -1978,6 +1980,7 @@ export const onDeleteFamilyDetailsDiseases = /* GraphQL */ `
       diseases {
         id
         name
+        description
         familyDetails {
           nextToken
         }
@@ -1991,6 +1994,7 @@ export const onCreateDisease = /* GraphQL */ `
     onCreateDisease(owner: $owner) {
       id
       name
+      description
       familyDetails {
         items {
           id
@@ -2006,6 +2010,7 @@ export const onUpdateDisease = /* GraphQL */ `
     onUpdateDisease(owner: $owner) {
       id
       name
+      description
       familyDetails {
         items {
           id
@@ -2021,6 +2026,7 @@ export const onDeleteDisease = /* GraphQL */ `
     onDeleteDisease(owner: $owner) {
       id
       name
+      description
       familyDetails {
         items {
           id

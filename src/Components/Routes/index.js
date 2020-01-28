@@ -8,13 +8,21 @@ import {
 
 import Home from './../Home';
 import AuthComponent from './../Authentication/AuthComponent';
+
+//allergies
 import Allergies from '../Allergies';
 import NewAllergy from '../Allergies/newAllergy';
 import EditAllergy from '../Allergies/editAllergy';
 
+//diseases
 import Diseases from '../Diseases';
 import NewDisease from '../Diseases/newDisease';
 import EditDisease from '../Diseases/editDisease';
+
+//medicalanalysis
+import MedicalAnalysis from '../MedicalAnalysis';
+import NewMedicalAnalysis from '../MedicalAnalysis/newMedicalAnalysis/';
+import EditMedicalAnalysis from '../MedicalAnalysis/editMedicalAnalysis/';
 
 export const Routes = ({ childProps }) => (
   <Switch>
@@ -26,6 +34,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/diseases" render={Diseases} props={childProps} />
     <ProtectedRouteAdmin exact path="/diseases/new" render={NewDisease} props={childProps} />
     <ProtectedRouteAdmin exact path="/diseases/:id/edit" render={EditDisease} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicalanalysis" render={MedicalAnalysis} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicalanalysis/new" render={NewMedicalAnalysis} props={childProps} />
+    <ProtectedRouteAdmin exact path="/medicalanalysis/:id/edit" render={EditMedicalAnalysis} props={childProps} />
   </Switch>
 );
 

@@ -1219,6 +1219,7 @@ export const getDisease = /* GraphQL */ `
     getDisease(id: $id) {
       id
       name
+      description
       familyDetails {
         items {
           id
@@ -1239,6 +1240,7 @@ export const listDiseases = /* GraphQL */ `
       items {
         id
         name
+        description
         familyDetails {
           nextToken
         }
