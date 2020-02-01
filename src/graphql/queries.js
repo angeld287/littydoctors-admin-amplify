@@ -447,9 +447,27 @@ export const getMedicalConsultation = /* GraphQL */ `
         image
         owner
       }
+      patient {
+        id
+        name
+        username
+        email
+        phone
+        phone_id
+        weight
+        height
+        size
+        age
+        birthdate
+        patientHistory {
+          id
+          owner
+        }
+        owner
+      }
       postConsultationsActivity {
         id
-        medicalPrescriptions {
+        medicalpres {
           nextToken
         }
         medicalAnalysis {
@@ -495,7 +513,7 @@ export const getMedicalConsultation = /* GraphQL */ `
       }
       doctorname
       secretary
-      patient
+      patientname
       createdAt
       owner
     }
@@ -524,6 +542,20 @@ export const listMedicalConsultations = /* GraphQL */ `
           image
           owner
         }
+        patient {
+          id
+          name
+          username
+          email
+          phone
+          phone_id
+          weight
+          height
+          size
+          age
+          birthdate
+          owner
+        }
         postConsultationsActivity {
           id
           doctor
@@ -541,7 +573,7 @@ export const listMedicalConsultations = /* GraphQL */ `
         }
         doctorname
         secretary
-        patient
+        patientname
         createdAt
         owner
       }
@@ -578,9 +610,9 @@ export const getMedicalHistory = /* GraphQL */ `
         vitalsign {
           id
           blood_pressure
-          Breathing
-          Pulse
-          Temperature
+          breathing
+          pulse
+          temperature
           doctor
           secretary
           patient
@@ -670,16 +702,14 @@ export const getPatient = /* GraphQL */ `
       patientHistory {
         id
         nonPathologicalHistory {
-          id
-          owner
+          nextToken
         }
         pathologicalHistory {
           id
           owner
         }
         familyHistory {
-          id
-          owner
+          nextToken
         }
         gynecoObstetricHistory {
           id
@@ -733,36 +763,14 @@ export const getPatientHistory = /* GraphQL */ `
     getPatientHistory(id: $id) {
       id
       nonPathologicalHistory {
-        id
-        alcohol {
+        items {
           id
           active
           frequency
           comment
           owner
         }
-        smoking {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        drugs {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        immunizations {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        owner
+        nextToken
       }
       pathologicalHistory {
         id
@@ -778,50 +786,13 @@ export const getPatientHistory = /* GraphQL */ `
         owner
       }
       familyHistory {
-        id
-        father {
+        items {
           id
           alive
-          relationship
           comment
           owner
         }
-        mother {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        brothers {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        grandfather {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        grandmother {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        other {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        owner
+        nextToken
       }
       gynecoObstetricHistory {
         id
@@ -849,16 +820,14 @@ export const listPatientHistorys = /* GraphQL */ `
       items {
         id
         nonPathologicalHistory {
-          id
-          owner
+          nextToken
         }
         pathologicalHistory {
           id
           owner
         }
         familyHistory {
-          id
-          owner
+          nextToken
         }
         gynecoObstetricHistory {
           id
@@ -882,34 +851,16 @@ export const getNonPathologicalHistory = /* GraphQL */ `
   query GetNonPathologicalHistory($id: ID!) {
     getNonPathologicalHistory(id: $id) {
       id
-      alcohol {
+      type {
         id
-        active
-        frequency
-        comment
+        name
+        description
+        module
         owner
       }
-      smoking {
-        id
-        active
-        frequency
-        comment
-        owner
-      }
-      drugs {
-        id
-        active
-        frequency
-        comment
-        owner
-      }
-      immunizations {
-        id
-        active
-        frequency
-        comment
-        owner
-      }
+      active
+      frequency
+      comment
       owner
     }
   }
@@ -927,64 +878,13 @@ export const listNonPathologicalHistorys = /* GraphQL */ `
     ) {
       items {
         id
-        alcohol {
+        type {
           id
-          active
-          frequency
-          comment
+          name
+          description
+          module
           owner
         }
-        smoking {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        drugs {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        immunizations {
-          id
-          active
-          frequency
-          comment
-          owner
-        }
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getNonPathologicalActivity = /* GraphQL */ `
-  query GetNonPathologicalActivity($id: ID!) {
-    getNonPathologicalActivity(id: $id) {
-      id
-      active
-      frequency
-      comment
-      owner
-    }
-  }
-`;
-export const listNonPathologicalActivitys = /* GraphQL */ `
-  query ListNonPathologicalActivitys(
-    $filter: ModelNonPathologicalActivityFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listNonPathologicalActivitys(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
         active
         frequency
         comment
@@ -1001,9 +901,7 @@ export const getPathologicalHistory = /* GraphQL */ `
       surgicalInterventions {
         items {
           id
-          name
-          description
-          owner
+          date
         }
         nextToken
       }
@@ -1055,66 +953,21 @@ export const getFamilyHistory = /* GraphQL */ `
   query GetFamilyHistory($id: ID!) {
     getFamilyHistory(id: $id) {
       id
-      father {
+      relationship {
         id
-        alive
-        relationship
-        diseases {
-          nextToken
-        }
-        comment
+        name
+        description
+        module
         owner
       }
-      mother {
-        id
-        alive
-        relationship
-        diseases {
-          nextToken
+      alive
+      diseases {
+        items {
+          id
         }
-        comment
-        owner
+        nextToken
       }
-      brothers {
-        id
-        alive
-        relationship
-        diseases {
-          nextToken
-        }
-        comment
-        owner
-      }
-      grandfather {
-        id
-        alive
-        relationship
-        diseases {
-          nextToken
-        }
-        comment
-        owner
-      }
-      grandmother {
-        id
-        alive
-        relationship
-        diseases {
-          nextToken
-        }
-        comment
-        owner
-      }
-      other {
-        id
-        alive
-        relationship
-        diseases {
-          nextToken
-        }
-        comment
-        owner
-      }
+      comment
       owner
     }
   }
@@ -1128,82 +981,14 @@ export const listFamilyHistorys = /* GraphQL */ `
     listFamilyHistorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        father {
+        relationship {
           id
-          alive
-          relationship
-          comment
+          name
+          description
+          module
           owner
         }
-        mother {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        brothers {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        grandfather {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        grandmother {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        other {
-          id
-          alive
-          relationship
-          comment
-          owner
-        }
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getFamilyDetails = /* GraphQL */ `
-  query GetFamilyDetails($id: ID!) {
-    getFamilyDetails(id: $id) {
-      id
-      alive
-      relationship
-      diseases {
-        items {
-          id
-        }
-        nextToken
-      }
-      comment
-      owner
-    }
-  }
-`;
-export const listFamilyDetailss = /* GraphQL */ `
-  query ListFamilyDetailss(
-    $filter: ModelFamilyDetailsFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listFamilyDetailss(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
         alive
-        relationship
         diseases {
           nextToken
         }
@@ -1343,12 +1128,6 @@ export const getMedicine = /* GraphQL */ `
       code
       drug_concentration
       chemical_composition
-      mp {
-        items {
-          id
-        }
-        nextToken
-      }
       owner
     }
   }
@@ -1369,9 +1148,6 @@ export const listMedicines = /* GraphQL */ `
         code
         drug_concentration
         chemical_composition
-        mp {
-          nextToken
-        }
         owner
       }
       nextToken
@@ -1382,11 +1158,17 @@ export const getPostConsultationsActivity = /* GraphQL */ `
   query GetPostConsultationsActivity($id: ID!) {
     getPostConsultationsActivity(id: $id) {
       id
-      medicalPrescriptions {
+      medicalpres {
         items {
           id
-          state
           date
+          frequency
+          duration
+          comment
+          doctor
+          secretary
+          patient
+          owner
         }
         nextToken
       }
@@ -1426,7 +1208,7 @@ export const listPostConsultationsActivitys = /* GraphQL */ `
     ) {
       items {
         id
-        medicalPrescriptions {
+        medicalpres {
           nextToken
         }
         medicalAnalysis {
@@ -1452,33 +1234,17 @@ export const getMedicalPrescription = /* GraphQL */ `
       frequency
       duration
       medications {
-        items {
-          id
-        }
-        nextToken
-      }
-      pca {
         id
-        state
-        date
-        pcActivities {
-          id
-          doctor
-          secretary
-          patient
-          owner
+        name
+        patients {
+          nextToken
         }
-        medicalPrescriptions {
-          id
-          date
-          frequency
-          duration
-          doctor
-          secretary
-          patient
-          owner
-        }
+        code
+        drug_concentration
+        chemical_composition
+        owner
       }
+      comment
       doctor
       secretary
       patient
@@ -1503,13 +1269,14 @@ export const listMedicalPrescriptions = /* GraphQL */ `
         frequency
         duration
         medications {
-          nextToken
-        }
-        pca {
           id
-          state
-          date
+          name
+          code
+          drug_concentration
+          chemical_composition
+          owner
         }
+        comment
         doctor
         secretary
         patient
@@ -1575,6 +1342,13 @@ export const getSurgicalIntervention = /* GraphQL */ `
         }
         nextToken
       }
+      pathologicalHistory {
+        items {
+          id
+          date
+        }
+        nextToken
+      }
       owner
     }
   }
@@ -1597,6 +1371,9 @@ export const listSurgicalInterventions = /* GraphQL */ `
         surgicalIntervention {
           nextToken
         }
+        pathologicalHistory {
+          nextToken
+        }
         owner
       }
       nextToken
@@ -1611,9 +1388,9 @@ export const getPhysicalExploration = /* GraphQL */ `
       vitalsign {
         id
         blood_pressure
-        Breathing
-        Pulse
-        Temperature
+        breathing
+        pulse
+        temperature
         doctor
         secretary
         patient
@@ -1657,9 +1434,9 @@ export const listPhysicalExplorations = /* GraphQL */ `
         vitalsign {
           id
           blood_pressure
-          Breathing
-          Pulse
-          Temperature
+          breathing
+          pulse
+          temperature
           doctor
           secretary
           patient
@@ -1693,9 +1470,9 @@ export const getVitalSign = /* GraphQL */ `
     getVitalSign(id: $id) {
       id
       blood_pressure
-      Breathing
-      Pulse
-      Temperature
+      breathing
+      pulse
+      temperature
       doctor
       secretary
       patient
@@ -1713,9 +1490,9 @@ export const listVitalSigns = /* GraphQL */ `
       items {
         id
         blood_pressure
-        Breathing
-        Pulse
-        Temperature
+        breathing
+        pulse
+        temperature
         doctor
         secretary
         patient
@@ -1766,6 +1543,35 @@ export const listRegionalExplorations = /* GraphQL */ `
         doctor
         secretary
         patient
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getCategory = /* GraphQL */ `
+  query GetCategory($id: ID!) {
+    getCategory(id: $id) {
+      id
+      name
+      description
+      module
+      owner
+    }
+  }
+`;
+export const listCategorys = /* GraphQL */ `
+  query ListCategorys(
+    $filter: ModelCategoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCategorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        module
         owner
       }
       nextToken

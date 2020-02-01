@@ -119,3 +119,126 @@ export const listMedicalAppointments = `query listMedicalAppointments(
   }
 }
 `;
+
+export const getMedicalConsultation = /* GraphQL */ `
+  query GetMedicalConsultation($id: ID!) {
+    getMedicalConsultation(id: $id) {
+      id
+      patient {
+        id
+        name
+        username
+        email
+        phone
+        weight
+        height
+        birthdate
+        patientHistory {
+          id
+          nonPathologicalHistory {
+            id
+            alcohol {
+              id
+              active
+              frequency
+              comment
+            }
+            smoking {
+              id
+              active
+              frequency
+              comment
+            }
+            drugs {
+              id
+              active
+              frequency
+              comment
+            }
+            immunizations {
+              id
+              active
+              frequency
+              comment
+            }
+          }
+          pathologicalHistory {
+            id
+            surgicalInterventions {
+              nextToken
+            }
+            patientMedications {
+              nextToken
+            }
+            patientAllergies {
+              nextToken
+            }
+          }
+          familyHistory {
+            id
+            father {
+              id
+              alive
+              relationship
+              comment
+            }
+            mother {
+              id
+              alive
+              relationship
+              comment
+            }
+            brothers {
+              id
+              alive
+              relationship
+              comment
+            }
+            grandfather {
+              id
+              alive
+              relationship
+              comment
+            }
+            grandmother {
+              id
+              alive
+              relationship
+              comment
+            }
+            other {
+              id
+              alive
+              relationship
+              comment
+            }
+          }
+        }
+      }
+      postConsultationsActivity {
+        id
+        medicalpres {
+          nextToken
+        }
+        medicalAnalysis {
+          nextToken
+        }
+        surgicalIntervention {
+          nextToken
+        }
+      }
+      medicalHistory {
+        id
+        reason
+        physicalExploration {
+          id
+          general_exploration
+          doctor
+          secretary
+          patient
+        }
+      }
+      createdAt
+    }
+  }
+`;

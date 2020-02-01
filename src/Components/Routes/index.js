@@ -34,6 +34,11 @@ import Medicines from '../Medicines';
 import NewMedicine from '../Medicines/newMedicine';
 import EditMedicine from '../Medicines/editMedicine';
 
+//categories
+import Categorys from '../Category';
+import NewCategory from '../Category/newCategory';
+import EditCategory from '../Category/editCategory';
+
 
 export const Routes = ({ childProps }) => (
   <Switch>
@@ -54,6 +59,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/medicines" render={Medicines} props={childProps} />
     <ProtectedRouteAdmin exact path="/medicines/new" render={NewMedicine} props={childProps} />
     <ProtectedRouteAdmin exact path="/medicines/:id/edit" render={EditMedicine} props={childProps} />
+    <ProtectedRouteAdmin exact path="/categories" render={Categorys} props={childProps} />
+    <ProtectedRouteAdmin exact path="/categories/new" render={NewCategory} props={childProps} />
+    <ProtectedRouteAdmin exact path="/categories/:id/edit" render={EditCategory} props={childProps} />
   </Switch>
 );
 
