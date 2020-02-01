@@ -1,0 +1,14 @@
+tr > td:nth-child(3) {
+	width: 200px;
+}
+
+@media (max-width: 429px) {
+	tr > td:nth-child(3) {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.dataTables_length > label {
+	padding-top: 0 !important;
+}
