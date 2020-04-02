@@ -39,6 +39,11 @@ import Categorys from '../Category';
 import NewCategory from '../Category/newCategory';
 import EditCategory from '../Category/editCategory';
 
+//religions
+import Religions from '../Religions';
+import NewReligion from '../Religions/newReligion';
+import EditReligion from '../Religions/editReligion';
+
 
 export const Routes = ({ childProps }) => (
   <Switch>
@@ -62,6 +67,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/categories" render={Categorys} props={childProps} />
     <ProtectedRouteAdmin exact path="/categories/new" render={NewCategory} props={childProps} />
     <ProtectedRouteAdmin exact path="/categories/:id/edit" render={EditCategory} props={childProps} />
+    <ProtectedRouteAdmin exact path="/religions" render={Religions} props={childProps} />
+    <ProtectedRouteAdmin exact path="/religions/new" render={NewReligion} props={childProps} />
+    <ProtectedRouteAdmin exact path="/religions/:id/edit" render={EditReligion} props={childProps} />
   </Switch>
 );
 
