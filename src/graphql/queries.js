@@ -10,7 +10,11 @@ export const getConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -44,7 +48,6 @@ export const listConsultingRooms = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -93,7 +96,11 @@ export const getDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality
+      speciality {
+        id
+        name
+        owner
+      }
       sex
       consultingroom {
         id
@@ -102,7 +109,6 @@ export const getDoctor = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -132,7 +138,11 @@ export const listDoctors = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -276,7 +286,11 @@ export const getMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -387,7 +401,6 @@ export const listMedicalAppointments = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -453,7 +466,11 @@ export const getMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -575,7 +592,6 @@ export const listMedicalConsultations = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -868,6 +884,31 @@ export const listReligions = /* GraphQL */ `
     $nextToken: String
   ) {
     listReligions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getSpecialty = /* GraphQL */ `
+  query GetSpecialty($id: ID!) {
+    getSpecialty(id: $id) {
+      id
+      name
+      owner
+    }
+  }
+`;
+export const listSpecialtys = /* GraphQL */ `
+  query ListSpecialtys(
+    $filter: ModelSpecialtyFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name

@@ -13,7 +13,11 @@ export const createConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -45,7 +49,11 @@ export const updateConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -77,7 +85,11 @@ export const deleteConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -143,7 +155,11 @@ export const createDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality
+      speciality {
+        id
+        name
+        owner
+      }
       sex
       consultingroom {
         id
@@ -152,7 +168,6 @@ export const createDoctor = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -180,7 +195,11 @@ export const updateDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality
+      speciality {
+        id
+        name
+        owner
+      }
       sex
       consultingroom {
         id
@@ -189,7 +208,6 @@ export const updateDoctor = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -217,7 +235,11 @@ export const deleteDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality
+      speciality {
+        id
+        name
+        owner
+      }
       sex
       consultingroom {
         id
@@ -226,7 +248,6 @@ export const deleteDoctor = /* GraphQL */ `
           name
           username
           email
-          speciality
           sex
           image
           owner
@@ -429,7 +450,11 @@ export const createMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -534,7 +559,11 @@ export const updateMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -639,7 +668,11 @@ export const deleteMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -739,7 +772,11 @@ export const createMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -855,7 +892,11 @@ export const updateMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -971,7 +1012,11 @@ export const deleteMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality
+        speciality {
+          id
+          name
+          owner
+        }
         sex
         consultingroom {
           id
@@ -1528,6 +1573,42 @@ export const deleteReligion = /* GraphQL */ `
     $condition: ModelReligionConditionInput
   ) {
     deleteReligion(input: $input, condition: $condition) {
+      id
+      name
+      owner
+    }
+  }
+`;
+export const createSpecialty = /* GraphQL */ `
+  mutation CreateSpecialty(
+    $input: CreateSpecialtyInput!
+    $condition: ModelSpecialtyConditionInput
+  ) {
+    createSpecialty(input: $input, condition: $condition) {
+      id
+      name
+      owner
+    }
+  }
+`;
+export const updateSpecialty = /* GraphQL */ `
+  mutation UpdateSpecialty(
+    $input: UpdateSpecialtyInput!
+    $condition: ModelSpecialtyConditionInput
+  ) {
+    updateSpecialty(input: $input, condition: $condition) {
+      id
+      name
+      owner
+    }
+  }
+`;
+export const deleteSpecialty = /* GraphQL */ `
+  mutation DeleteSpecialty(
+    $input: DeleteSpecialtyInput!
+    $condition: ModelSpecialtyConditionInput
+  ) {
+    deleteSpecialty(input: $input, condition: $condition) {
       id
       name
       owner

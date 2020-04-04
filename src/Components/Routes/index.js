@@ -44,6 +44,10 @@ import Religions from '../Religions';
 import NewReligion from '../Religions/newReligion';
 import EditReligion from '../Religions/editReligion';
 
+//specialty
+import Specialtys from '../Specialtys';
+import NewSpecialty from '../Specialtys/newSpecialty';
+import EditSpecialty from '../Specialtys/editSpecialty';
 
 export const Routes = ({ childProps }) => (
   <Switch>
@@ -70,6 +74,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/religions" render={Religions} props={childProps} />
     <ProtectedRouteAdmin exact path="/religions/new" render={NewReligion} props={childProps} />
     <ProtectedRouteAdmin exact path="/religions/:id/edit" render={EditReligion} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialtys" render={Specialtys} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialtys/new" render={NewSpecialty} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialtys/:id/edit" render={EditSpecialty} props={childProps} />
   </Switch>
 );
 
