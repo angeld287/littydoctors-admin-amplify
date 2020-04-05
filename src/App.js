@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Amplify from 'aws-amplify';
-import aws_exports from './aws-exports'; 
+import aws_exports from './aws-exports-prod'; 
 
 import App from './Components/App';
 

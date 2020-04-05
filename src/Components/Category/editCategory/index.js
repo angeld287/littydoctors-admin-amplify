@@ -58,6 +58,9 @@ const EditCategory = () => {
 										<option value="">Seleccione una opcion</option>
 										<option value="NonPathologicalHistory">NonPathologicalHistory</option>
 										<option value="FamilyHistory">FamilyHistory</option>
+										<option value="NonPathType">NonPathType</option>
+										<option value="NonPathFrequency">NonPathFrequency</option>
+										<option value="PresciptionsFrequency">PresciptionsFrequency</option>
 									</select>
 								</div>
 								{errors.module && <span className="text-danger mb-2">{errors.module.message}</span>}
