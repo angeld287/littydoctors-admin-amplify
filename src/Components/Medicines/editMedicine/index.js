@@ -65,7 +65,7 @@ const EditMedicine = () => {
 								<br />
 
 								<label htmlFor="chemical_composition" className="grey-text font-weight-light">
-									Concentracion Quimica:
+									Componentes Quimicos:
 								</label>
 								<input
 									name="chemical_composition"
