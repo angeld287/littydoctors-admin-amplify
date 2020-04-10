@@ -32,4 +32,5 @@ build/
 dist/
 node_modules/
 aws-exports.js
+aws-exports-prod.js
 awsconfiguration.json
