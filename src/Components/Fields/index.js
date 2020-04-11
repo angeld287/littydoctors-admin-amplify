@@ -1,66 +1,93 @@
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
+import React, { Fragment } from 'react';
+import useFields from './useFields';
+import { Link } from 'react-router-dom';
+import { MDBContainer, MDBBox, MDBDataTable, MDBBtn, MDBSpinner, MDBRow } from 'mdbreact';
 
-const Field = () => {
-  return (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <form>
-            <p className="h4 text-center mb-4">Write to us</p>
-            <label htmlFor="defaultFormContactNameEx" className="grey-text">
-              Your name
-            </label>
-            <input
-              type="text"
-              id="defaultFormContactNameEx"
-              className="form-control"
-            />
-            <br />
-            <label htmlFor="defaultFormContactEmailEx" className="grey-text">
-              Your email
-            </label>
-            <input
-              type="email"
-              id="defaultFormContactEmailEx"
-              className="form-control"
-            />
-            <br />
-            <label
-              htmlFor="defaultFormContactSubjectEx"
-              className="grey-text"
-            >
-              Subject
-            </label>
-            <input
-              type="text"
-              id="defaultFormContactSubjectEx"
-              className="form-control"
-            />
-            <br />
-            <label
-              htmlFor="defaultFormContactMessageEx"
-              className="grey-text"
-            >
-              Your message
-            </label>
-            <textarea
-              type="text"
-              id="defaultFormContactMessageEx"
-              className="form-control"
-              rows="3"
-            />
-            <div className="text-center mt-4">
-              <MDBBtn color="warning" outline type="submit">
-                Send
-                <MDBIcon far icon="paper-plane" className="ml-2" />
-              </MDBBtn>
-            </div>
-          </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
+import './index.css';
+
+const Fields = () => {
+	const { items, error, loading, handleDelete } = useFields();
+
+	const data = () => {
+		var formated = [];
+		items.forEach((item) => {
+			var _modules = "| ";
+			
+			item.modules.forEach(e => _modules = _modules+e+", ");
+			formated.push({
+				name: item.name,
+				modules: _modules,
+				options: (
+					<Fragment>
+						<Link to={`fields/${item.id}/edit`} className="btn btn-success btn-sm">
+							Editar
+						</Link>
+						<MDBBtn color="red" size="sm" onClick={() => handleDelete(item.id)}>
+							Borrar
+						</MDBBtn>
+					</Fragment>
+				)
+			});
+		});
+
+		return {
+			columns: [
+				{
+					label: 'Nombre',
+					field: 'name',
+					sort: 'asc'
+				},
+				{
+					label: 'Modulos',
+					field: 'modules',
+					sort: 'asc'
+				},
+				{
+					label: 'Opciones',
+					field: 'options',
+					sort: 'disabled'
+				}
+			],
+			rows: formated
+		};
+	}
+
+	if (loading) {
+		return (
+			<MDBContainer>
+				<MDBRow display="flex" justifyContent="center" className="mt-5">
+					<MDBSpinner big />
+				</MDBRow>
+			</MDBContainer>
+		);
+	}
+
+	if (error) return <h2>Ha ocurrido un error</h2>;
+
+	return (
+		<MDBContainer>
+			<Link to={`fields/new`} className="btn btn-primary btn-sm">
+				Crear
+			</Link>
+			<MDBDataTable
+				striped
+				bordered
+				searchLabel="Buscar"
+				responsiveSm={true}
+				small
+				hover
+				entries={5}
+				btn={true}
+				data={data()}
+				noRecordsFoundLabel="No se han encontrado datos"
+				entriesLabel="Numero de datos"
+				entriesOptions={[ 5, 10 ]}
+				infoLabel={[ 'Mostrando del', 'al', 'de', 'registros' ]}
+				paginationLabel={[ 'Anterior', 'Siguiente' ]}
+				noBottomColumns={true}
+			/>
+		</MDBContainer>
+	);
 };
 
-export default Field;
+export default Fields;
