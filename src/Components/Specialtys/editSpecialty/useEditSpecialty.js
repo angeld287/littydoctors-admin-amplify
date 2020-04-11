@@ -42,7 +42,7 @@ const useEditSpecialty = () => {
 	const onSubmit = async (input) => {
 		input.id = id;
 		try {
-			await API.graphql(graphqlOperation(updateSpecialty, { input: {id: id, name: input.name, description: input.description } }));
+			await API.graphql(graphqlOperation(updateSpecialty, { input: {id: id, name: input.name, code: input.code } }));
 			await Swal.fire('Correcto', 'El elemento se ha actualizado correctamente', 'success');
 			history.push('/specialtys');
 		} catch (e) {

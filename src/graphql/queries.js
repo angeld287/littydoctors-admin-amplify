@@ -13,6 +13,7 @@ export const getConsultingRoom = /* GraphQL */ `
         speciality {
           id
           name
+          code
           owner
         }
         sex
@@ -99,6 +100,7 @@ export const getDoctor = /* GraphQL */ `
       speciality {
         id
         name
+        code
         owner
       }
       sex
@@ -141,6 +143,7 @@ export const listDoctors = /* GraphQL */ `
         speciality {
           id
           name
+          code
           owner
         }
         sex
@@ -289,6 +292,7 @@ export const getMedicalAppointment = /* GraphQL */ `
         speciality {
           id
           name
+          code
           owner
         }
         sex
@@ -313,6 +317,7 @@ export const getMedicalAppointment = /* GraphQL */ `
         size
         age
         sex
+        image
         id_card
         religion {
           id
@@ -323,9 +328,7 @@ export const getMedicalAppointment = /* GraphQL */ `
         marital_status
         birthdate
         patientHistory {
-          id
-          createdAt
-          owner
+          nextToken
         }
         createdAt
         owner
@@ -418,6 +421,7 @@ export const listMedicalAppointments = /* GraphQL */ `
           size
           age
           sex
+          image
           id_card
           address
           marital_status
@@ -469,6 +473,7 @@ export const getMedicalConsultation = /* GraphQL */ `
         speciality {
           id
           name
+          code
           owner
         }
         sex
@@ -492,6 +497,7 @@ export const getMedicalConsultation = /* GraphQL */ `
         size
         age
         sex
+        image
         id_card
         religion {
           id
@@ -502,9 +508,7 @@ export const getMedicalConsultation = /* GraphQL */ `
         marital_status
         birthdate
         patientHistory {
-          id
-          createdAt
-          owner
+          nextToken
         }
         createdAt
         owner
@@ -541,6 +545,7 @@ export const getMedicalConsultation = /* GraphQL */ `
           size
           age
           sex
+          image
           id_card
           address
           marital_status
@@ -608,6 +613,7 @@ export const listMedicalConsultations = /* GraphQL */ `
           size
           age
           sex
+          image
           id_card
           address
           marital_status
@@ -662,6 +668,7 @@ export const getMedicalHistory = /* GraphQL */ `
         size
         age
         sex
+        image
         id_card
         religion {
           id
@@ -672,9 +679,7 @@ export const getMedicalHistory = /* GraphQL */ `
         marital_status
         birthdate
         patientHistory {
-          id
-          createdAt
-          owner
+          nextToken
         }
         createdAt
         owner
@@ -745,6 +750,7 @@ export const listMedicalHistorys = /* GraphQL */ `
           size
           age
           sex
+          image
           id_card
           address
           marital_status
@@ -785,6 +791,7 @@ export const getPatient = /* GraphQL */ `
       size
       age
       sex
+      image
       id_card
       religion {
         id
@@ -795,33 +802,12 @@ export const getPatient = /* GraphQL */ `
       marital_status
       birthdate
       patientHistory {
-        id
-        nonPathologicalHistory {
-          nextToken
-        }
-        pathologicalHistory {
+        items {
           id
           createdAt
           owner
         }
-        familyHistory {
-          nextToken
-        }
-        gynecoObstetricHistory {
-          id
-          menarche
-          sexual_development
-          menstrual_rhythm
-          sex_life
-          deliveries
-          abortions
-          caesarean_sections
-          contraceptive_method
-          createdAt
-          owner
-        }
-        createdAt
-        owner
+        nextToken
       }
       createdAt
       owner
@@ -847,6 +833,7 @@ export const listPatients = /* GraphQL */ `
         size
         age
         sex
+        image
         id_card
         religion {
           id
@@ -857,9 +844,7 @@ export const listPatients = /* GraphQL */ `
         marital_status
         birthdate
         patientHistory {
-          id
-          createdAt
-          owner
+          nextToken
         }
         createdAt
         owner
@@ -898,6 +883,7 @@ export const getSpecialty = /* GraphQL */ `
     getSpecialty(id: $id) {
       id
       name
+      code
       owner
     }
   }
@@ -912,6 +898,7 @@ export const listSpecialtys = /* GraphQL */ `
       items {
         id
         name
+        code
         owner
       }
       nextToken
@@ -1373,6 +1360,7 @@ export const getPostConsultationsActivity = /* GraphQL */ `
           id
           state
           date
+          file
           createdAt
         }
         nextToken
@@ -1490,6 +1478,74 @@ export const listMedicalPrescriptions = /* GraphQL */ `
     }
   }
 `;
+export const getMedicalAnalysisResults = /* GraphQL */ `
+  query GetMedicalAnalysisResults($id: ID!) {
+    getMedicalAnalysisResults(id: $id) {
+      id
+      field {
+        id
+        name
+        modules
+        owner
+      }
+      value
+      owner
+    }
+  }
+`;
+export const listMedicalAnalysisResultss = /* GraphQL */ `
+  query ListMedicalAnalysisResultss(
+    $filter: ModelMedicalAnalysisResultsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMedicalAnalysisResultss(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        field {
+          id
+          name
+          modules
+          owner
+        }
+        value
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getField = /* GraphQL */ `
+  query GetField($id: ID!) {
+    getField(id: $id) {
+      id
+      name
+      modules
+      owner
+    }
+  }
+`;
+export const listFields = /* GraphQL */ `
+  query ListFields(
+    $filter: ModelFieldFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFields(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        modules
+        owner
+      }
+      nextToken
+    }
+  }
+`;
 export const getMedicalAnalysis = /* GraphQL */ `
   query GetMedicalAnalysis($id: ID!) {
     getMedicalAnalysis(id: $id) {
@@ -1501,6 +1557,7 @@ export const getMedicalAnalysis = /* GraphQL */ `
           id
           state
           date
+          file
           createdAt
         }
         nextToken

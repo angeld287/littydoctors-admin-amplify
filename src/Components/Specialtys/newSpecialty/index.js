@@ -26,6 +26,18 @@ const NewSpecialty = () => {
 								{errors.name && <span className="text-danger mb-2">{errors.name.message}</span>}
 
 								<br />
+								<label htmlFor="code" className="grey-text font-weight-light">
+									Codigo:
+								</label>
+								<input
+									name="code"
+									autoComplete="off"
+									className="form-control"
+									ref={register({ required: { message: 'Este campo es requerido', value: true } })}
+								/>
+								{errors.code && <span className="text-danger mb-2">{errors.code.message}</span>}
+
+								<br />
 
 								<div className="text-center py-4 mt-3">
 									<MDBBtn

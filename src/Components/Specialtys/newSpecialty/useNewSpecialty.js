@@ -11,7 +11,7 @@ const useNewSpecialty = () => {
 
 	const onSubmit = async (input) => {
 		try {
-			await API.graphql(graphqlOperation(createSpecialty, { input: {name: input.name, description: input.description } }));
+			await API.graphql(graphqlOperation(createSpecialty, { input: {name: input.name, code: input.code } }));
 			await Swal.fire('Correcto', 'El elemento se ha creado correctamente', 'success');
 			history.push('/specialtys');
 		} catch (error) {

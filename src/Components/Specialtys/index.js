@@ -13,6 +13,7 @@ const Specialtys = () => {
 		items.forEach((item) => {
 			formated.push({
 				name: item.name,
+				code: item.code,
 				options: (
 					<Fragment>
 						<Link to={`specialtys/${item.id}/edit`} className="btn btn-success btn-sm">
@@ -31,6 +32,11 @@ const Specialtys = () => {
 				{
 					label: 'Nombre',
 					field: 'name',
+					sort: 'asc'
+				},
+				{
+					label: 'Codigo',
+					field: 'code',
 					sort: 'asc'
 				},
 				{
