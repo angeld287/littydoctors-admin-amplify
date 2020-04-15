@@ -16,7 +16,7 @@ const useFields = () => {
 			var api = [];
 
 			try {
-				api = await API.graphql(graphqlOperation(listFields));
+				api = await API.graphql(graphqlOperation(listFields, {limit: 400}));
 			} catch (error) {
 				setLoading(false);
 				setError(true);
