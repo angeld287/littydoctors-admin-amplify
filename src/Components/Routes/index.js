@@ -54,6 +54,10 @@ import Fields from '../Fields';
 import NewField from '../Fields/newField';
 import EditField from '../Fields/editField';
 
+
+//TermsConditions
+import TermsConditions from '../TermsConditions';
+
 export const Routes = ({ childProps }) => (
   <Switch>
     <Route exact path="/" render={() => <Home/>} />
@@ -85,6 +89,7 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/fields" render={Fields} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/new" render={NewField} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/:id/edit" render={EditField} props={childProps} />
+    <ProtectedRouteAdmin exact path="/termsconditions" render={TermsConditions} props={childProps} />
   </Switch>
 );
 

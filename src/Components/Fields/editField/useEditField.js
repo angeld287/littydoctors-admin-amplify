@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useForm from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getField, listMedicalAnalysiss } from '../../../graphql/queries';
+import { getField, listMedicalAnalysiss, listSpecialtys } from '../../../graphql/queries';
 import { updateField } from '../../../graphql/mutations';
 import Swal from 'sweetalert2';
 
@@ -22,14 +22,21 @@ const useEditField = () => {
 			let didCancel = false;
 			const fetch = async () => {
 				var _item = [];
+				var _specialties = [];
 				var _analysis = [];
 				var _codes = [];
 
 				try {
 					_item = await API.graphql(graphqlOperation(getField, { id }));
-					_analysis = await API.graphql(graphqlOperation(listMedicalAnalysiss));
+					_specialties = await API.graphql(graphqlOperation(listSpecialtys, {limit: 400}));
+					_analysis = await API.graphql(graphqlOperation(listMedicalAnalysiss, {limit: 400}));
 
 					_analysis.data.listMedicalAnalysiss.items.forEach(element => {
+						var item = {value: element.id, label: element.name};
+						_codes.push(item);
+					});
+
+					_specialties.data.listSpecialtys.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_codes.push(item);
 					});
