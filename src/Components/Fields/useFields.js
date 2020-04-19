@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listFields } from '../../graphql/queries';
 import Swal from 'sweetalert2';
-import { deleteField } from '../../graphql/mutations';
+import { updateField } from '../../graphql/mutations';
 
 const useFields = () => {
 	const [ items, setItems ] = useState([]);
@@ -15,9 +15,18 @@ const useFields = () => {
 		const fetch = async () => {
 			var api = [];
 
+			const filter = {
+				filter: {
+					deleted: {eq: false}
+				},
+				limit: 400
+			};
+
 			try {
-				api = await API.graphql(graphqlOperation(listFields, {limit: 400}));
+				api = await API.graphql(graphqlOperation(listFields, filter));
 			} catch (error) {
+				console.log(error);
+				
 				setLoading(false);
 				setError(true);
 			}
@@ -47,12 +56,14 @@ const useFields = () => {
 		});
 
 		var input = {
-			id
+			id: id,
+			deleted: true,
+			deletedAt: new Date()	
 		};
 
 		if (result.value) {
 			try {
-				await API.graphql(graphqlOperation(deleteField, { input }));
+				await API.graphql(graphqlOperation(updateField, { input }));
 				Swal.fire('Eliminado correctamente!', '', 'success');
 				setItems(items.filter((item) => item.id !== id));
 			} catch (error) {

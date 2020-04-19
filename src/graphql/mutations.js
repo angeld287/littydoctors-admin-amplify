@@ -17,23 +17,38 @@ export const createConsultingRoom = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       secretary
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -54,23 +69,38 @@ export const updateConsultingRoom = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       secretary
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -91,23 +121,38 @@ export const deleteConsultingRoom = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       secretary
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -120,6 +165,9 @@ export const createLocation = /* GraphQL */ `
     createLocation(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -132,6 +180,9 @@ export const updateLocation = /* GraphQL */ `
     updateLocation(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -144,6 +195,9 @@ export const deleteLocation = /* GraphQL */ `
     deleteLocation(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -162,6 +216,9 @@ export const createDoctor = /* GraphQL */ `
         id
         name
         code
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       sex
@@ -174,17 +231,29 @@ export const createDoctor = /* GraphQL */ `
           email
           sex
           image
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         secretary
         location {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       image
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -203,6 +272,9 @@ export const updateDoctor = /* GraphQL */ `
         id
         name
         code
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       sex
@@ -215,17 +287,29 @@ export const updateDoctor = /* GraphQL */ `
           email
           sex
           image
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         secretary
         location {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       image
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -244,6 +328,9 @@ export const deleteDoctor = /* GraphQL */ `
         id
         name
         code
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       sex
@@ -256,17 +343,29 @@ export const deleteDoctor = /* GraphQL */ `
           email
           sex
           image
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         secretary
         location {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       image
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -449,6 +548,9 @@ export const createMedicalAppointment = /* GraphQL */ `
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctor {
@@ -460,15 +562,24 @@ export const createMedicalAppointment = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctorname
@@ -489,14 +600,22 @@ export const createMedicalAppointment = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -558,6 +677,9 @@ export const updateMedicalAppointment = /* GraphQL */ `
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctor {
@@ -569,15 +691,24 @@ export const updateMedicalAppointment = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctorname
@@ -598,14 +729,22 @@ export const updateMedicalAppointment = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -667,6 +806,9 @@ export const deleteMedicalAppointment = /* GraphQL */ `
       location {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctor {
@@ -678,15 +820,24 @@ export const deleteMedicalAppointment = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       doctorname
@@ -707,14 +858,22 @@ export const deleteMedicalAppointment = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -782,15 +941,24 @@ export const createMedicalConsultation = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       patient {
@@ -810,14 +978,22 @@ export const createMedicalConsultation = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -856,8 +1032,13 @@ export const createMedicalConsultation = /* GraphQL */ `
           image
           id_card
           address
+          code
+          temporary_password
           marital_status
           birthdate
+          approved_terms_conditions
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -903,15 +1084,24 @@ export const updateMedicalConsultation = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       patient {
@@ -931,14 +1121,22 @@ export const updateMedicalConsultation = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -977,8 +1175,13 @@ export const updateMedicalConsultation = /* GraphQL */ `
           image
           id_card
           address
+          code
+          temporary_password
           marital_status
           birthdate
+          approved_terms_conditions
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -1024,15 +1227,24 @@ export const deleteMedicalConsultation = /* GraphQL */ `
           id
           name
           code
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         sex
         consultingroom {
           id
           secretary
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       patient {
@@ -1052,14 +1264,22 @@ export const deleteMedicalConsultation = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1098,8 +1318,13 @@ export const deleteMedicalConsultation = /* GraphQL */ `
           image
           id_card
           address
+          code
+          temporary_password
           marital_status
           birthdate
+          approved_terms_conditions
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -1154,14 +1379,22 @@ export const createMedicalHistory = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1188,7 +1421,6 @@ export const createMedicalHistory = /* GraphQL */ `
           abdomen
           members
           genitals
-          others
           doctor
           secretary
           patient
@@ -1234,14 +1466,22 @@ export const updateMedicalHistory = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1268,7 +1508,6 @@ export const updateMedicalHistory = /* GraphQL */ `
           abdomen
           members
           genitals
-          others
           doctor
           secretary
           patient
@@ -1314,14 +1553,22 @@ export const deleteMedicalHistory = /* GraphQL */ `
         religion {
           id
           name
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         address
+        code
+        temporary_password
         marital_status
         birthdate
+        approved_terms_conditions
         patientHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1348,7 +1595,6 @@ export const deleteMedicalHistory = /* GraphQL */ `
           abdomen
           members
           genitals
-          others
           doctor
           secretary
           patient
@@ -1391,11 +1637,17 @@ export const createPatient = /* GraphQL */ `
       religion {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       address
+      code
+      temporary_password
       marital_status
       birthdate
+      approved_terms_conditions
       patientHistory {
         items {
           id
@@ -1404,6 +1656,8 @@ export const createPatient = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -1431,11 +1685,17 @@ export const updatePatient = /* GraphQL */ `
       religion {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       address
+      code
+      temporary_password
       marital_status
       birthdate
+      approved_terms_conditions
       patientHistory {
         items {
           id
@@ -1444,6 +1704,8 @@ export const updatePatient = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -1471,11 +1733,17 @@ export const deletePatient = /* GraphQL */ `
       religion {
         id
         name
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       address
+      code
+      temporary_password
       marital_status
       birthdate
+      approved_terms_conditions
       patientHistory {
         items {
           id
@@ -1484,6 +1752,8 @@ export const deletePatient = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -1497,6 +1767,9 @@ export const createReligion = /* GraphQL */ `
     createReligion(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1509,6 +1782,9 @@ export const updateReligion = /* GraphQL */ `
     updateReligion(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1521,6 +1797,9 @@ export const deleteReligion = /* GraphQL */ `
     deleteReligion(input: $input, condition: $condition) {
       id
       name
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1534,6 +1813,9 @@ export const createSpecialty = /* GraphQL */ `
       id
       name
       code
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1547,6 +1829,9 @@ export const updateSpecialty = /* GraphQL */ `
       id
       name
       code
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1560,6 +1845,9 @@ export const deleteSpecialty = /* GraphQL */ `
       id
       name
       code
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -1756,6 +2044,8 @@ export const createNonPathologicalHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1779,6 +2069,8 @@ export const updateNonPathologicalHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1802,6 +2094,8 @@ export const deleteNonPathologicalHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1930,6 +2224,8 @@ export const createFamilyHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1959,6 +2255,8 @@ export const updateFamilyHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -1988,6 +2286,8 @@ export const deleteFamilyHistory = /* GraphQL */ `
         name
         description
         module
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2019,6 +2319,8 @@ export const createFamilyDetailsDiseases = /* GraphQL */ `
           name
           description
           module
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -2037,6 +2339,8 @@ export const createFamilyDetailsDiseases = /* GraphQL */ `
         familyDetails {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2058,6 +2362,8 @@ export const updateFamilyDetailsDiseases = /* GraphQL */ `
           name
           description
           module
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -2076,6 +2382,8 @@ export const updateFamilyDetailsDiseases = /* GraphQL */ `
         familyDetails {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2097,6 +2405,8 @@ export const deleteFamilyDetailsDiseases = /* GraphQL */ `
           name
           description
           module
+          deleted
+          deletedAt
           createdAt
           owner
         }
@@ -2115,6 +2425,8 @@ export const deleteFamilyDetailsDiseases = /* GraphQL */ `
         familyDetails {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2138,6 +2450,8 @@ export const createDisease = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2159,6 +2473,8 @@ export const updateDisease = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2180,6 +2496,8 @@ export const deleteDisease = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2261,6 +2579,8 @@ export const createAllergy = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2282,6 +2602,8 @@ export const updateAllergy = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2303,6 +2625,8 @@ export const deleteAllergy = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -2336,6 +2660,8 @@ export const createPatientAllergies = /* GraphQL */ `
         patients {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2371,6 +2697,8 @@ export const updatePatientAllergies = /* GraphQL */ `
         patients {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2406,6 +2734,8 @@ export const deletePatientAllergies = /* GraphQL */ `
         patients {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2852,6 +3182,9 @@ export const createPostConsultActMedAnalysis = /* GraphQL */ `
         items {
           id
           value
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         nextToken
@@ -2881,6 +3214,8 @@ export const createPostConsultActMedAnalysis = /* GraphQL */ `
         medicalAnalysis {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2901,6 +3236,9 @@ export const updatePostConsultActMedAnalysis = /* GraphQL */ `
         items {
           id
           value
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         nextToken
@@ -2930,6 +3268,8 @@ export const updatePostConsultActMedAnalysis = /* GraphQL */ `
         medicalAnalysis {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2950,6 +3290,9 @@ export const deletePostConsultActMedAnalysis = /* GraphQL */ `
         items {
           id
           value
+          deleted
+          deletedAt
+          createdAt
           owner
         }
         nextToken
@@ -2979,6 +3322,8 @@ export const deletePostConsultActMedAnalysis = /* GraphQL */ `
         medicalAnalysis {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -2986,56 +3331,74 @@ export const deletePostConsultActMedAnalysis = /* GraphQL */ `
     }
   }
 `;
-export const createMedicalAnalysisResults = /* GraphQL */ `
-  mutation CreateMedicalAnalysisResults(
-    $input: CreateMedicalAnalysisResultsInput!
-    $condition: ModelMedicalAnalysisResultsConditionInput
+export const createOthersFields = /* GraphQL */ `
+  mutation CreateOthersFields(
+    $input: CreateOthersFieldsInput!
+    $condition: ModelOthersFieldsConditionInput
   ) {
-    createMedicalAnalysisResults(input: $input, condition: $condition) {
+    createOthersFields(input: $input, condition: $condition) {
       id
       field {
         id
         name
         modules
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       value
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
 `;
-export const updateMedicalAnalysisResults = /* GraphQL */ `
-  mutation UpdateMedicalAnalysisResults(
-    $input: UpdateMedicalAnalysisResultsInput!
-    $condition: ModelMedicalAnalysisResultsConditionInput
+export const updateOthersFields = /* GraphQL */ `
+  mutation UpdateOthersFields(
+    $input: UpdateOthersFieldsInput!
+    $condition: ModelOthersFieldsConditionInput
   ) {
-    updateMedicalAnalysisResults(input: $input, condition: $condition) {
+    updateOthersFields(input: $input, condition: $condition) {
       id
       field {
         id
         name
         modules
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       value
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
 `;
-export const deleteMedicalAnalysisResults = /* GraphQL */ `
-  mutation DeleteMedicalAnalysisResults(
-    $input: DeleteMedicalAnalysisResultsInput!
-    $condition: ModelMedicalAnalysisResultsConditionInput
+export const deleteOthersFields = /* GraphQL */ `
+  mutation DeleteOthersFields(
+    $input: DeleteOthersFieldsInput!
+    $condition: ModelOthersFieldsConditionInput
   ) {
-    deleteMedicalAnalysisResults(input: $input, condition: $condition) {
+    deleteOthersFields(input: $input, condition: $condition) {
       id
       field {
         id
         name
         modules
+        deleted
+        deletedAt
+        createdAt
         owner
       }
       value
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -3049,6 +3412,9 @@ export const createField = /* GraphQL */ `
       id
       name
       modules
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -3062,6 +3428,9 @@ export const updateField = /* GraphQL */ `
       id
       name
       modules
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -3075,6 +3444,9 @@ export const deleteField = /* GraphQL */ `
       id
       name
       modules
+      deleted
+      deletedAt
+      createdAt
       owner
     }
   }
@@ -3098,6 +3470,8 @@ export const createMedicalAnalysis = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3122,6 +3496,8 @@ export const updateMedicalAnalysis = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3146,6 +3522,8 @@ export const deleteMedicalAnalysis = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3187,6 +3565,8 @@ export const createPostConsultActSurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3230,6 +3610,8 @@ export const updatePostConsultActSurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3273,6 +3655,8 @@ export const deletePostConsultActSurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3312,6 +3696,8 @@ export const createPathologicalHistorySurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3351,6 +3737,8 @@ export const updatePathologicalHistorySurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3390,6 +3778,8 @@ export const deletePathologicalHistorySurgicalInt = /* GraphQL */ `
         pathologicalHistory {
           nextToken
         }
+        deleted
+        deletedAt
         createdAt
         owner
       }
@@ -3423,6 +3813,8 @@ export const createSurgicalIntervention = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3454,6 +3846,8 @@ export const updateSurgicalIntervention = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3485,6 +3879,8 @@ export const deleteSurgicalIntervention = /* GraphQL */ `
         }
         nextToken
       }
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3518,7 +3914,9 @@ export const createPhysicalExploration = /* GraphQL */ `
         abdomen
         members
         genitals
-        others
+        others {
+          nextToken
+        }
         doctor
         secretary
         patient
@@ -3561,7 +3959,9 @@ export const updatePhysicalExploration = /* GraphQL */ `
         abdomen
         members
         genitals
-        others
+        others {
+          nextToken
+        }
         doctor
         secretary
         patient
@@ -3604,7 +4004,9 @@ export const deletePhysicalExploration = /* GraphQL */ `
         abdomen
         members
         genitals
-        others
+        others {
+          nextToken
+        }
         doctor
         secretary
         patient
@@ -3689,7 +4091,17 @@ export const createRegionalExploration = /* GraphQL */ `
       abdomen
       members
       genitals
-      others
+      others {
+        items {
+          id
+          value
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
       doctor
       secretary
       patient
@@ -3711,7 +4123,17 @@ export const updateRegionalExploration = /* GraphQL */ `
       abdomen
       members
       genitals
-      others
+      others {
+        items {
+          id
+          value
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
       doctor
       secretary
       patient
@@ -3733,7 +4155,17 @@ export const deleteRegionalExploration = /* GraphQL */ `
       abdomen
       members
       genitals
-      others
+      others {
+        items {
+          id
+          value
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
       doctor
       secretary
       patient
@@ -3752,6 +4184,8 @@ export const createCategory = /* GraphQL */ `
       name
       description
       module
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3767,6 +4201,8 @@ export const updateCategory = /* GraphQL */ `
       name
       description
       module
+      deleted
+      deletedAt
       createdAt
       owner
     }
@@ -3782,6 +4218,8 @@ export const deleteCategory = /* GraphQL */ `
       name
       description
       module
+      deleted
+      deletedAt
       createdAt
       owner
     }

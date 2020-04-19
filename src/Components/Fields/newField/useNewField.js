@@ -68,7 +68,7 @@ const useNewField = () => {
 		);
 
 		try {
-			await API.graphql(graphqlOperation(createField, { input: {name: input.name, modules: _m } }));
+			await API.graphql(graphqlOperation(createField, { input: {name: input.name, modules: _m, deleted: false } }));
 			await Swal.fire('Correcto', 'El elemento se ha creado correctamente', 'success');
 			history.push('/fields');
 		} catch (error) {
