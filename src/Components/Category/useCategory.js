@@ -16,7 +16,7 @@ const useCategorys = () => {
 			var api = [];
 
 			try {
-				api = await API.graphql(graphqlOperation(listCategorys));
+				api = await API.graphql(graphqlOperation(listCategorys, {limit:400}));
 			} catch (error) {
 				setLoading(false);
 				setError(true);
