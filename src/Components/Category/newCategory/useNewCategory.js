@@ -12,10 +12,9 @@ const useNewCategory = () => {
 	const onSubmit = async (input) => {
 		try {
 			const result = await API.graphql(graphqlOperation(createCategory, { input: {name: input.name, description: input.description, module: input.module } }));
-			console.log(result);
 			
 			await Swal.fire('Correcto', 'El elemento se ha creado correctamente', 'success');
-			//history.push('/categories');
+			history.push('/categories');
 		} catch (error) {
 			Swal.fire('Ha ocurrido un error', 'Intentelo de nuevo mas tarde', 'error');
 		}
