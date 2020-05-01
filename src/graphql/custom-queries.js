@@ -242,3 +242,30 @@ export const getMedicalConsultation = /* GraphQL */ `
     }
   }
 `;
+
+export const listSpecialtys = /* GraphQL */ `
+  query ListSpecialtys(
+    $filter: ModelSpecialtyFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        code
+        subSpecialty {
+          items{
+            id
+            name
+          }
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

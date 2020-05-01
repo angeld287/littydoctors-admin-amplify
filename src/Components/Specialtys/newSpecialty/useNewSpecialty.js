@@ -3,11 +3,15 @@ import useForm from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createSpecialty } from '../../../graphql/mutations';
+
 import Swal from 'sweetalert2';
 
 const useNewSpecialty = () => {
 	const { register, handleSubmit, errors, formState } = useForm();
 	let history = useHistory();
+	const [ error, setError ] = useState(false);
+	const [ loading, setLoading ] = useState(false);
+	const [ api, setApi ] = useState({});
 
 	const onSubmit = async (input) => {
 		try {
@@ -19,7 +23,7 @@ const useNewSpecialty = () => {
 		}
 	};
 
-	return { onSubmit, register, handleSubmit, errors, formState };
+	return { onSubmit, register, handleSubmit, errors, formState, error, loading, api };
 };
 
 export default useNewSpecialty;

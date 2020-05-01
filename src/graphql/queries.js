@@ -19,6 +19,15 @@ export const getConsultingRoom = /* GraphQL */ `
           createdAt
           owner
         }
+        subspeciality {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
         sex
         consultingroom {
           id
@@ -131,6 +140,18 @@ export const getDoctor = /* GraphQL */ `
         id
         name
         code
+        subSpecialty {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspeciality {
+        id
+        name
+        code
         deleted
         deletedAt
         createdAt
@@ -186,6 +207,15 @@ export const listDoctors = /* GraphQL */ `
         username
         email
         speciality {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        subspeciality {
           id
           name
           code
@@ -347,6 +377,15 @@ export const getMedicalAppointment = /* GraphQL */ `
         username
         email
         speciality {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        subspeciality {
           id
           name
           code
@@ -564,6 +603,15 @@ export const getMedicalConsultation = /* GraphQL */ `
           createdAt
           owner
         }
+        subspeciality {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
         sex
         consultingroom {
           id
@@ -663,6 +711,15 @@ export const getMedicalConsultation = /* GraphQL */ `
         physicalExploration {
           id
           general_exploration
+          doctor
+          secretary
+          patient
+          createdAt
+          owner
+        }
+        diagnosis {
+          id
+          commentary
           doctor
           secretary
           patient
@@ -842,6 +899,44 @@ export const getMedicalHistory = /* GraphQL */ `
         createdAt
         owner
       }
+      diagnosis {
+        id
+        type {
+          id
+          name
+          description
+          module
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        evolution {
+          id
+          name
+          description
+          module
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        diagnosis {
+          id
+          name
+          description
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        commentary
+        doctor
+        secretary
+        patient
+        createdAt
+        owner
+      }
       doctor
       secretary
       patientname
@@ -894,6 +989,15 @@ export const listMedicalHistorys = /* GraphQL */ `
           createdAt
           owner
         }
+        diagnosis {
+          id
+          commentary
+          doctor
+          secretary
+          patient
+          createdAt
+          owner
+        }
         doctor
         secretary
         patientname
@@ -937,6 +1041,9 @@ export const getPatient = /* GraphQL */ `
       patientHistory {
         items {
           id
+          doctor
+          secretary
+          patient
           createdAt
           owner
         }
@@ -1033,6 +1140,18 @@ export const getSpecialty = /* GraphQL */ `
       id
       name
       code
+      subSpecialty {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
       deleted
       deletedAt
       createdAt
@@ -1047,6 +1166,42 @@ export const listSpecialtys = /* GraphQL */ `
     $nextToken: String
   ) {
     listSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        code
+        subSpecialty {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getSubSpecialty = /* GraphQL */ `
+  query GetSubSpecialty($id: ID!) {
+    getSubSpecialty(id: $id) {
+      id
+      name
+      code
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const listSubSpecialtys = /* GraphQL */ `
+  query ListSubSpecialtys(
+    $filter: ModelSubSpecialtyFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
@@ -1070,6 +1225,10 @@ export const getPatientHistory = /* GraphQL */ `
           active
           frequency
           comment
+          risk_factor
+          doctor
+          secretary
+          patient
           createdAt
           owner
         }
@@ -1086,6 +1245,9 @@ export const getPatientHistory = /* GraphQL */ `
         patientAllergies {
           nextToken
         }
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -1094,6 +1256,9 @@ export const getPatientHistory = /* GraphQL */ `
           id
           alive
           comment
+          doctor
+          secretary
+          patient
           createdAt
           owner
         }
@@ -1109,9 +1274,15 @@ export const getPatientHistory = /* GraphQL */ `
         abortions
         caesarean_sections
         contraceptive_method
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
+      doctor
+      secretary
+      patient
       createdAt
       owner
     }
@@ -1131,6 +1302,9 @@ export const listPatientHistorys = /* GraphQL */ `
         }
         pathologicalHistory {
           id
+          doctor
+          secretary
+          patient
           createdAt
           owner
         }
@@ -1147,9 +1321,15 @@ export const listPatientHistorys = /* GraphQL */ `
           abortions
           caesarean_sections
           contraceptive_method
+          doctor
+          secretary
+          patient
           createdAt
           owner
         }
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -1174,6 +1354,10 @@ export const getNonPathologicalHistory = /* GraphQL */ `
       active
       frequency
       comment
+      risk_factor
+      doctor
+      secretary
+      patient
       createdAt
       owner
     }
@@ -1205,6 +1389,10 @@ export const listNonPathologicalHistorys = /* GraphQL */ `
         active
         frequency
         comment
+        risk_factor
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -1239,6 +1427,9 @@ export const getPathologicalHistory = /* GraphQL */ `
         }
         nextToken
       }
+      doctor
+      secretary
+      patient
       createdAt
       owner
     }
@@ -1266,6 +1457,9 @@ export const listPathologicalHistorys = /* GraphQL */ `
         patientAllergies {
           nextToken
         }
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -1296,6 +1490,9 @@ export const getFamilyHistory = /* GraphQL */ `
         nextToken
       }
       comment
+      doctor
+      secretary
+      patient
       createdAt
       owner
     }
@@ -1325,6 +1522,9 @@ export const listFamilyHistorys = /* GraphQL */ `
           nextToken
         }
         comment
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -1387,6 +1587,9 @@ export const getGynecoObstetricHistory = /* GraphQL */ `
       abortions
       caesarean_sections
       contraceptive_method
+      doctor
+      secretary
+      patient
       createdAt
       owner
     }
@@ -1413,6 +1616,9 @@ export const listGynecoObstetricHistorys = /* GraphQL */ `
         abortions
         caesarean_sections
         contraceptive_method
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }
@@ -2061,6 +2267,100 @@ export const listCategorys = /* GraphQL */ `
         module
         deleted
         deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getDiagnosis = /* GraphQL */ `
+  query GetDiagnosis($id: ID!) {
+    getDiagnosis(id: $id) {
+      id
+      type {
+        id
+        name
+        description
+        module
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      evolution {
+        id
+        name
+        description
+        module
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      diagnosis {
+        id
+        name
+        description
+        familyDetails {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      commentary
+      doctor
+      secretary
+      patient
+      createdAt
+      owner
+    }
+  }
+`;
+export const listDiagnosiss = /* GraphQL */ `
+  query ListDiagnosiss(
+    $filter: ModelDiagnosisFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDiagnosiss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        type {
+          id
+          name
+          description
+          module
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        evolution {
+          id
+          name
+          description
+          module
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        diagnosis {
+          id
+          name
+          description
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        commentary
+        doctor
+        secretary
+        patient
         createdAt
         owner
       }

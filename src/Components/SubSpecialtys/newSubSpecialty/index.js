@@ -1,10 +1,10 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBSpinner } from 'mdbreact';
-import useNewSpecialty from './useNewSpecialty';
+import useNewSubSpecialty from './useNewSubSpecialty';
 import Select from 'react-select';
 
-const NewSpecialty = () => {
-	const { onSubmit, register, handleSubmit, errors, formState, error, loading, api  } = useNewSpecialty();
+const NewSubSpecialty = () => {
+	const { onSubmit, register, handleSubmit, errors, formState, setSpeciality, error, loading, api } = useNewSubSpecialty();
 
 	if ( loading ) return <MDBSpinner />;
 
@@ -49,7 +49,14 @@ const NewSpecialty = () => {
 								{errors.code && <span className="text-danger mb-2">{errors.code.message}</span>}
 
 								<br />
-								
+
+								<label htmlFor="modules" className="grey-text font-weight-light">
+									Especialidad:
+								</label>
+								<div>
+									<Select id="modules" options={api.specialities} onChange={ (v) => {setSpeciality(v)}} />
+								</div>
+								<br/>
 
 								<div className="text-center py-4 mt-3">
 									<MDBBtn
@@ -69,4 +76,4 @@ const NewSpecialty = () => {
 	);
 };
 
-export default NewSpecialty;
+export default NewSubSpecialty;
