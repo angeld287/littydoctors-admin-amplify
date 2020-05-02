@@ -10,23 +10,14 @@ export const getConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -136,26 +127,23 @@ export const getDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality {
-        id
-        name
-        code
-        subSpecialty {
-          nextToken
+      specialities {
+        items {
+          id
         }
-        deleted
-        deletedAt
-        createdAt
-        owner
+        nextToken
       }
-      subspeciality {
-        id
-        name
-        code
-        deleted
-        deletedAt
-        createdAt
-        owner
+      subspecialies {
+        items {
+          id
+        }
+        nextToken
+      }
+      subspecialiessec {
+        items {
+          id
+        }
+        nextToken
       }
       sex
       consultingroom {
@@ -206,23 +194,14 @@ export const listDoctors = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -234,6 +213,166 @@ export const listDoctors = /* GraphQL */ `
           owner
         }
         image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getSpeciality = /* GraphQL */ `
+  query GetSpeciality($id: ID!) {
+    getSpeciality(id: $id) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const listSpecialitys = /* GraphQL */ `
+  query ListSpecialitys(
+    $filter: ModelSpecialityFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSpecialitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getSubSpeciality = /* GraphQL */ `
+  query GetSubSpeciality($id: ID!) {
+    getSubSpeciality(id: $id) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const listSubSpecialitys = /* GraphQL */ `
+  query ListSubSpecialitys(
+    $filter: ModelSubSpecialityFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubSpecialitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getSubSpecialitySecond = /* GraphQL */ `
+  query GetSubSpecialitySecond($id: ID!) {
+    getSubSpecialitySecond(id: $id) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const listSubSpecialitySeconds = /* GraphQL */ `
+  query ListSubSpecialitySeconds(
+    $filter: ModelSubSpecialitySecondFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubSpecialitySeconds(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
         deleted
         deletedAt
         createdAt
@@ -376,23 +515,14 @@ export const getMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -594,23 +724,14 @@ export const getMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -1125,87 +1246,6 @@ export const listReligions = /* GraphQL */ `
       items {
         id
         name
-        deleted
-        deletedAt
-        createdAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getSpecialty = /* GraphQL */ `
-  query GetSpecialty($id: ID!) {
-    getSpecialty(id: $id) {
-      id
-      name
-      code
-      subSpecialty {
-        items {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
-        }
-        nextToken
-      }
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const listSpecialtys = /* GraphQL */ `
-  query ListSpecialtys(
-    $filter: ModelSpecialtyFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        code
-        subSpecialty {
-          nextToken
-        }
-        deleted
-        deletedAt
-        createdAt
-        owner
-      }
-      nextToken
-    }
-  }
-`;
-export const getSubSpecialty = /* GraphQL */ `
-  query GetSubSpecialty($id: ID!) {
-    getSubSpecialty(id: $id) {
-      id
-      name
-      code
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const listSubSpecialtys = /* GraphQL */ `
-  query ListSubSpecialtys(
-    $filter: ModelSubSpecialtyFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listSubSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        code
         deleted
         deletedAt
         createdAt

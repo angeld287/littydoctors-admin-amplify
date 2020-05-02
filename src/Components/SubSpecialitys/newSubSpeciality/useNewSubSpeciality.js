@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import useForm from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { createSubSpecialty } from '../../../graphql/mutations';
-import { listSpecialtys } from '../../../graphql/queries';
+import { createSubSpeciality } from '../../../graphql/mutations';
+import { listSpecialitys } from '../../../graphql/queries';
 import Swal from 'sweetalert2';
 
-const useNewSubSpecialty = () => {
+const useNewSubSpeciality = () => {
 	const { register, handleSubmit, errors, formState } = useForm();
 	let history = useHistory();
 	const [ error, setError ] = useState(false);
@@ -22,9 +22,9 @@ const useNewSubSpecialty = () => {
 				var _spec = [];
 
 				try {
-					spec = await API.graphql(graphqlOperation(listSpecialtys, {limit: 400}));
+					spec = await API.graphql(graphqlOperation(listSpecialitys, {limit: 400}));
 
-					spec.data.listSpecialtys.items.forEach(element => {
+					spec.data.listSpecialitys.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_spec.push(item);
 					});
@@ -58,9 +58,9 @@ const useNewSubSpecialty = () => {
 			return
 		}
 		try {
-			await API.graphql(graphqlOperation(createSubSpecialty, { input: {name: input.name, code: input.code, specialtySubSpecialtyId: speciality.value } }));
+			await API.graphql(graphqlOperation(createSubSpeciality, { input: {name: input.name, code: input.code, SpecialitySubSpecialityId: speciality.value } }));
 			await Swal.fire('Correcto', 'El elemento se ha creado correctamente', 'success');
-			history.push('/subspecialtys');
+			history.push('/subspecialitys');
 		} catch (error) {
 			Swal.fire('Ha ocurrido un error', 'Intentelo de nuevo mas tarde', 'error');
 		}
@@ -69,4 +69,4 @@ const useNewSubSpecialty = () => {
 	return { onSubmit, register, handleSubmit, errors, formState, error, loading, api, setSpeciality };
 };
 
-export default useNewSubSpecialty;
+export default useNewSubSpeciality;

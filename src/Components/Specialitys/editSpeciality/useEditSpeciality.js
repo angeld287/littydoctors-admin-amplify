@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import useForm from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getSpecialty } from '../../../graphql/queries';
-import { updateSpecialty } from '../../../graphql/mutations';
+import { getSpeciality } from '../../../graphql/queries';
+import { updateSpeciality } from '../../../graphql/mutations';
 import Swal from 'sweetalert2';
 
-const useEditSpecialty = () => {
+const useEditSpeciality = () => {
 	let history = useHistory();
 	let { id } = useParams();
 	const [ item, setItem ] = useState({});
@@ -20,13 +20,13 @@ const useEditSpecialty = () => {
 				let api = {};
 
 				try {
-					api = await API.graphql(graphqlOperation(getSpecialty, { id }));
+					api = await API.graphql(graphqlOperation(getSpeciality, { id }));
 				} catch (e) {
 					setError(true);
 				}
 
 				if (!didCancel) {
-					setItem(api.data.getSpecialty);
+					setItem(api.data.getSpeciality);
 				}
 
 				return () => {
@@ -42,9 +42,9 @@ const useEditSpecialty = () => {
 	const onSubmit = async (input) => {
 		input.id = id;
 		try {
-			await API.graphql(graphqlOperation(updateSpecialty, { input: {id: id, name: input.name, code: input.code } }));
+			await API.graphql(graphqlOperation(updateSpeciality, { input: {id: id, name: input.name, code: input.code } }));
 			await Swal.fire('Correcto', 'El elemento se ha actualizado correctamente', 'success');
-			history.push('/specialtys');
+			history.push('/specialitys');
 		} catch (e) {
 			Swal.fire('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
 		}
@@ -53,4 +53,4 @@ const useEditSpecialty = () => {
 	return { onSubmit, item, register, handleSubmit, errors, error  };
 };
 
-export default useEditSpecialty;
+export default useEditSpeciality;

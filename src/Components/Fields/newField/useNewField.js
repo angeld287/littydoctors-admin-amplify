@@ -3,7 +3,7 @@ import useForm from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createField } from '../../../graphql/mutations';
-import { listMedicalAnalysiss, listSpecialtys } from '../../../graphql/queries';
+import { listMedicalAnalysiss, listSpecialitys } from '../../../graphql/queries';
 import Swal from 'sweetalert2';
 
 const useNewField = () => {
@@ -24,14 +24,14 @@ const useNewField = () => {
 
 				try {
 					_analysis = await API.graphql(graphqlOperation(listMedicalAnalysiss, {limit: 400}));
-					_specialties = await API.graphql(graphqlOperation(listSpecialtys, {limit: 400}));
+					_specialties = await API.graphql(graphqlOperation(listSpecialitys, {limit: 400}));
 
 					_analysis.data.listMedicalAnalysiss.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_codes.push(item);
 					});
 
-					_specialties.data.listSpecialtys.items.forEach(element => {
+					_specialties.data.listSpecialitys.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_codes.push(item);
 					});

@@ -44,15 +44,15 @@ import Religions from '../Religions';
 import NewReligion from '../Religions/newReligion';
 import EditReligion from '../Religions/editReligion';
 
-//specialty
-import Specialtys from '../Specialtys';
-import NewSpecialty from '../Specialtys/newSpecialty';
-import EditSpecialty from '../Specialtys/editSpecialty';
+//Speciality
+import Specialitys from '../Specialitys';
+import NewSpeciality from '../Specialitys/newSpeciality';
+import EditSpeciality from '../Specialitys/editSpeciality';
 
-//subspecialty
-import SubSpecialtys from '../SubSpecialtys';
-import NewSubSpecialty from '../SubSpecialtys/newSubSpecialty';
-import EditSubSpecialty from '../SubSpecialtys/editSubSpecialty';
+//subSpeciality
+import SubSpecialitys from '../SubSpecialitys';
+import NewSubSpeciality from '../SubSpecialitys/newSubSpeciality';
+import EditSubSpeciality from '../SubSpecialitys/editSubSpeciality';
 
 //fields
 import Fields from '../Fields';
@@ -88,12 +88,12 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/religions" render={Religions} props={childProps} />
     <ProtectedRouteAdmin exact path="/religions/new" render={NewReligion} props={childProps} />
     <ProtectedRouteAdmin exact path="/religions/:id/edit" render={EditReligion} props={childProps} />
-    <ProtectedRouteAdmin exact path="/specialtys" render={Specialtys} props={childProps} />
-    <ProtectedRouteAdmin exact path="/specialtys/new" render={NewSpecialty} props={childProps} />
-    <ProtectedRouteAdmin exact path="/specialtys/:id/edit" render={EditSpecialty} props={childProps} />
-    <ProtectedRouteAdmin exact path="/subspecialtys" render={SubSpecialtys} props={childProps} />
-    <ProtectedRouteAdmin exact path="/subspecialtys/new" render={NewSubSpecialty} props={childProps} />
-    <ProtectedRouteAdmin exact path="/subspecialtys/:id/edit" render={EditSubSpecialty} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialitys" render={Specialitys} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialitys/new" render={NewSpeciality} props={childProps} />
+    <ProtectedRouteAdmin exact path="/specialitys/:id/edit" render={EditSpeciality} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialitys" render={SubSpecialitys} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialitys/new" render={NewSubSpeciality} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialitys/:id/edit" render={EditSubSpeciality} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields" render={Fields} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/new" render={NewField} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/:id/edit" render={EditField} props={childProps} />

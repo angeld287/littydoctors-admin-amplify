@@ -243,18 +243,18 @@ export const getMedicalConsultation = /* GraphQL */ `
   }
 `;
 
-export const listSpecialtys = /* GraphQL */ `
-  query ListSpecialtys(
-    $filter: ModelSpecialtyFilterInput
+export const listSpecialitys = /* GraphQL */ `
+  query ListSpecialitys(
+    $filter: ModelSpecialityFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listSpecialtys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listSpecialitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
         code
-        subSpecialty {
+        subSpeciality {
           items{
             id
             name

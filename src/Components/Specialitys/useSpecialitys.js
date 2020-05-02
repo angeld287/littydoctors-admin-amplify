@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listSpecialtys } from '../../graphql/queries';
+import { listSpecialitys } from '../../graphql/queries';
 import Swal from 'sweetalert2';
-import { deleteSpecialty } from '../../graphql/mutations';
+import { deleteSpeciality } from '../../graphql/mutations';
 
-const useSpecialtys = () => {
+const useSpecialitys = () => {
 	const [ items, setItems ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 	const [ error, setError ] = useState(false);
@@ -16,14 +16,14 @@ const useSpecialtys = () => {
 			var api = [];
 
 			try {
-				api = await API.graphql(graphqlOperation(listSpecialtys));
+				api = await API.graphql(graphqlOperation(listSpecialitys));
 			} catch (error) {
 				setLoading(false);
 				setError(true);
 			}
 
 			if (!didCancel) {
-				setItems(api.data.listSpecialtys.items);
+				setItems(api.data.listSpecialitys.items);
 				setLoading(false);
 			}
 		};
@@ -52,7 +52,7 @@ const useSpecialtys = () => {
 
 		if (result.value) {
 			try {
-				await API.graphql(graphqlOperation(deleteSpecialty, { input }));
+				await API.graphql(graphqlOperation(deleteSpeciality, { input }));
 				Swal.fire('Eliminado correctamente!', '', 'success');
 				setItems(items.filter((item) => item.id !== id));
 			} catch (error) {
@@ -64,4 +64,4 @@ const useSpecialtys = () => {
 	return { items, error, loading, handleDelete };
 };
 
-export default useSpecialtys;
+export default useSpecialitys;

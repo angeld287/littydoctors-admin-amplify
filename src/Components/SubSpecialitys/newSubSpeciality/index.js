@@ -1,15 +1,16 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBSpinner } from 'mdbreact';
-import useEditSpecialty from './useEditSpecialty';
+import useNewSubSpeciality from './useNewSubSpeciality';
+import Select from 'react-select';
 
-const EditSpecialty = () => {
-	const { onSubmit, item, register, handleSubmit, errors, error } = useEditSpecialty();
+const NewSubSpeciality = () => {
+	const { onSubmit, register, handleSubmit, errors, formState, setSpeciality, error, loading, api } = useNewSubSpeciality();
 
-	if (Object.entries(item).length === 0 && item.constructor === Object) return <MDBSpinner />;
+	if ( loading ) return <MDBSpinner />;
 
 	if (error) {
 		return (
-			<MDBContainer>
+			<MDBContainer className="mt-4">
 				<h3>Ha ocurrido un error</h3>
 			</MDBContainer>
 		);
@@ -22,7 +23,7 @@ const EditSpecialty = () => {
 					<MDBCard>
 						<MDBCardBody>
 							<form onSubmit={handleSubmit(onSubmit)}>
-								<p className="h4 text-center py-4">Editar Elemento</p>
+								<p className="h4 text-center py-4">Nueva Categoria</p>
 
 								<label htmlFor="name" className="grey-text font-weight-light">
 									Nombre:
@@ -30,29 +31,40 @@ const EditSpecialty = () => {
 								<input
 									name="name"
 									autoComplete="off"
-									defaultValue={item.name}
 									className="form-control"
 									ref={register({ required: { message: 'Este campo es requerido', value: true } })}
 								/>
 								{errors.name && <span className="text-danger mb-2">{errors.name.message}</span>}
-								<br />
 
+								<br />
 								<label htmlFor="code" className="grey-text font-weight-light">
 									Codigo:
 								</label>
 								<input
 									name="code"
 									autoComplete="off"
-									defaultValue={item.code}
 									className="form-control"
 									ref={register({ required: { message: 'Este campo es requerido', value: true } })}
 								/>
 								{errors.code && <span className="text-danger mb-2">{errors.code.message}</span>}
 
 								<br />
+
+								<label htmlFor="modules" className="grey-text font-weight-light">
+									Especialidad:
+								</label>
+								<div>
+									<Select id="modules" options={api.specialities} onChange={ (v) => {setSpeciality(v)}} />
+								</div>
+								<br/>
+
 								<div className="text-center py-4 mt-3">
-									<MDBBtn className="btn btn-outline-blue" type="submit">
-										Guardar
+									<MDBBtn
+										className="btn btn-outline-blue"
+										type="submit"
+										disabled={formState.isSubmitting}
+									>
+										Agregar
 									</MDBBtn>
 								</div>
 							</form>
@@ -64,4 +76,4 @@ const EditSpecialty = () => {
 	);
 };
 
-export default EditSpecialty;
+export default NewSubSpeciality;

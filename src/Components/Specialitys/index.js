@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import useSpecialtys from './useSpecialtys';
+import useSpecialitys from './useSpecialitys';
 import { Link } from 'react-router-dom';
 import { MDBContainer, MDBBox, MDBDataTable, MDBBtn, MDBSpinner, MDBRow } from 'mdbreact';
 
 import './index.css';
 
-const Specialtys = () => {
-	const { items, error, loading, handleDelete } = useSpecialtys();
+const Specialitys = () => {
+	const { items, error, loading, handleDelete } = useSpecialitys();
 
 	const data = () => {
 		var formated = [];
@@ -16,7 +16,7 @@ const Specialtys = () => {
 				code: item.code,
 				options: (
 					<Fragment>
-						<Link to={`specialtys/${item.id}/edit`} className="btn btn-success btn-sm">
+						<Link to={`specialitys/${item.id}/edit`} className="btn btn-success btn-sm">
 							Editar
 						</Link>
 						<MDBBtn color="red" size="sm" onClick={() => handleDelete(item.id)}>
@@ -63,7 +63,7 @@ const Specialtys = () => {
 
 	return (
 		<MDBContainer>
-			<Link to={`specialtys/new`} className="btn btn-primary btn-sm">
+			<Link to={`specialitys/new`} className="btn btn-primary btn-sm">
 				Crear
 			</Link>
 			<MDBDataTable
@@ -87,4 +87,4 @@ const Specialtys = () => {
 	);
 };
 
-export default Specialtys;
+export default Specialitys;

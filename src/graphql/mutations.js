@@ -13,23 +13,14 @@ export const createConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -74,23 +65,14 @@ export const updateConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -135,23 +117,14 @@ export const deleteConsultingRoom = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -239,26 +212,23 @@ export const createDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality {
-        id
-        name
-        code
-        subSpecialty {
-          nextToken
+      specialities {
+        items {
+          id
         }
-        deleted
-        deletedAt
-        createdAt
-        owner
+        nextToken
       }
-      subspeciality {
-        id
-        name
-        code
-        deleted
-        deletedAt
-        createdAt
-        owner
+      subspecialies {
+        items {
+          id
+        }
+        nextToken
+      }
+      subspecialiessec {
+        items {
+          id
+        }
+        nextToken
       }
       sex
       consultingroom {
@@ -307,26 +277,23 @@ export const updateDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality {
-        id
-        name
-        code
-        subSpecialty {
-          nextToken
+      specialities {
+        items {
+          id
         }
-        deleted
-        deletedAt
-        createdAt
-        owner
+        nextToken
       }
-      subspeciality {
-        id
-        name
-        code
-        deleted
-        deletedAt
-        createdAt
-        owner
+      subspecialies {
+        items {
+          id
+        }
+        nextToken
+      }
+      subspecialiessec {
+        items {
+          id
+        }
+        nextToken
       }
       sex
       consultingroom {
@@ -375,26 +342,23 @@ export const deleteDoctor = /* GraphQL */ `
       name
       username
       email
-      speciality {
-        id
-        name
-        code
-        subSpecialty {
-          nextToken
+      specialities {
+        items {
+          id
         }
-        deleted
-        deletedAt
-        createdAt
-        owner
+        nextToken
       }
-      subspeciality {
-        id
-        name
-        code
-        deleted
-        deletedAt
-        createdAt
-        owner
+      subspecialies {
+        items {
+          id
+        }
+        nextToken
+      }
+      subspecialiessec {
+        items {
+          id
+        }
+        nextToken
       }
       sex
       consultingroom {
@@ -426,6 +390,753 @@ export const deleteDoctor = /* GraphQL */ `
         owner
       }
       image
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const createDoctorSpecialities = /* GraphQL */ `
+  mutation CreateDoctorSpecialities(
+    $input: CreateDoctorSpecialitiesInput!
+    $condition: ModelDoctorSpecialitiesConditionInput
+  ) {
+    createDoctorSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      speciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const updateDoctorSpecialities = /* GraphQL */ `
+  mutation UpdateDoctorSpecialities(
+    $input: UpdateDoctorSpecialitiesInput!
+    $condition: ModelDoctorSpecialitiesConditionInput
+  ) {
+    updateDoctorSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      speciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const deleteDoctorSpecialities = /* GraphQL */ `
+  mutation DeleteDoctorSpecialities(
+    $input: DeleteDoctorSpecialitiesInput!
+    $condition: ModelDoctorSpecialitiesConditionInput
+  ) {
+    deleteDoctorSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      speciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const createSpeciality = /* GraphQL */ `
+  mutation CreateSpeciality(
+    $input: CreateSpecialityInput!
+    $condition: ModelSpecialityConditionInput
+  ) {
+    createSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const updateSpeciality = /* GraphQL */ `
+  mutation UpdateSpeciality(
+    $input: UpdateSpecialityInput!
+    $condition: ModelSpecialityConditionInput
+  ) {
+    updateSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const deleteSpeciality = /* GraphQL */ `
+  mutation DeleteSpeciality(
+    $input: DeleteSpecialityInput!
+    $condition: ModelSpecialityConditionInput
+  ) {
+    deleteSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const createDoctorSubSpecialities = /* GraphQL */ `
+  mutation CreateDoctorSubSpecialities(
+    $input: CreateDoctorSubSpecialitiesInput!
+    $condition: ModelDoctorSubSpecialitiesConditionInput
+  ) {
+    createDoctorSubSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspeciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const updateDoctorSubSpecialities = /* GraphQL */ `
+  mutation UpdateDoctorSubSpecialities(
+    $input: UpdateDoctorSubSpecialitiesInput!
+    $condition: ModelDoctorSubSpecialitiesConditionInput
+  ) {
+    updateDoctorSubSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspeciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const deleteDoctorSubSpecialities = /* GraphQL */ `
+  mutation DeleteDoctorSubSpecialities(
+    $input: DeleteDoctorSubSpecialitiesInput!
+    $condition: ModelDoctorSubSpecialitiesConditionInput
+  ) {
+    deleteDoctorSubSpecialities(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspeciality {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        subSpeciality {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const createSubSpeciality = /* GraphQL */ `
+  mutation CreateSubSpeciality(
+    $input: CreateSubSpecialityInput!
+    $condition: ModelSubSpecialityConditionInput
+  ) {
+    createSubSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const updateSubSpeciality = /* GraphQL */ `
+  mutation UpdateSubSpeciality(
+    $input: UpdateSubSpecialityInput!
+    $condition: ModelSubSpecialityConditionInput
+  ) {
+    updateSubSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const deleteSubSpeciality = /* GraphQL */ `
+  mutation DeleteSubSpeciality(
+    $input: DeleteSubSpecialityInput!
+    $condition: ModelSubSpecialityConditionInput
+  ) {
+    deleteSubSpeciality(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      subSpeciality {
+        items {
+          id
+          name
+          code
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const createDoctorSsSecond = /* GraphQL */ `
+  mutation CreateDoctorSsSecond(
+    $input: CreateDoctorSSSecondInput!
+    $condition: ModelDoctorSSSecondConditionInput
+  ) {
+    createDoctorSSSecond(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspecialitysec {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const updateDoctorSsSecond = /* GraphQL */ `
+  mutation UpdateDoctorSsSecond(
+    $input: UpdateDoctorSSSecondInput!
+    $condition: ModelDoctorSSSecondConditionInput
+  ) {
+    updateDoctorSSSecond(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspecialitysec {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const deleteDoctorSsSecond = /* GraphQL */ `
+  mutation DeleteDoctorSsSecond(
+    $input: DeleteDoctorSSSecondInput!
+    $condition: ModelDoctorSSSecondConditionInput
+  ) {
+    deleteDoctorSSSecond(input: $input, condition: $condition) {
+      id
+      doctor {
+        id
+        name
+        username
+        email
+        specialities {
+          nextToken
+        }
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
+        }
+        sex
+        consultingroom {
+          id
+          secretary
+          deleted
+          deletedAt
+          createdAt
+          owner
+        }
+        image
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      subspecialitysec {
+        id
+        name
+        code
+        doctors {
+          nextToken
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+    }
+  }
+`;
+export const createSubSpecialitySecond = /* GraphQL */ `
+  mutation CreateSubSpecialitySecond(
+    $input: CreateSubSpecialitySecondInput!
+    $condition: ModelSubSpecialitySecondConditionInput
+  ) {
+    createSubSpecialitySecond(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const updateSubSpecialitySecond = /* GraphQL */ `
+  mutation UpdateSubSpecialitySecond(
+    $input: UpdateSubSpecialitySecondInput!
+    $condition: ModelSubSpecialitySecondConditionInput
+  ) {
+    updateSubSpecialitySecond(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
+      deleted
+      deletedAt
+      createdAt
+      owner
+    }
+  }
+`;
+export const deleteSubSpecialitySecond = /* GraphQL */ `
+  mutation DeleteSubSpecialitySecond(
+    $input: DeleteSubSpecialitySecondInput!
+    $condition: ModelSubSpecialitySecondConditionInput
+  ) {
+    deleteSubSpecialitySecond(input: $input, condition: $condition) {
+      id
+      name
+      code
+      doctors {
+        items {
+          id
+        }
+        nextToken
+      }
       deleted
       deletedAt
       createdAt
@@ -621,23 +1332,14 @@ export const createMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -759,23 +1461,14 @@ export const updateMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -897,23 +1590,14 @@ export const deleteMedicalAppointment = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -1027,23 +1711,14 @@ export const createMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -1188,23 +1863,14 @@ export const updateMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -1349,23 +2015,14 @@ export const deleteMedicalConsultation = /* GraphQL */ `
         name
         username
         email
-        speciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        specialities {
+          nextToken
         }
-        subspeciality {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
+        subspecialies {
+          nextToken
+        }
+        subspecialiessec {
+          nextToken
         }
         sex
         consultingroom {
@@ -2064,138 +2721,6 @@ export const deleteReligion = /* GraphQL */ `
     deleteReligion(input: $input, condition: $condition) {
       id
       name
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const createSpecialty = /* GraphQL */ `
-  mutation CreateSpecialty(
-    $input: CreateSpecialtyInput!
-    $condition: ModelSpecialtyConditionInput
-  ) {
-    createSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
-      subSpecialty {
-        items {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
-        }
-        nextToken
-      }
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const updateSpecialty = /* GraphQL */ `
-  mutation UpdateSpecialty(
-    $input: UpdateSpecialtyInput!
-    $condition: ModelSpecialtyConditionInput
-  ) {
-    updateSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
-      subSpecialty {
-        items {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
-        }
-        nextToken
-      }
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const deleteSpecialty = /* GraphQL */ `
-  mutation DeleteSpecialty(
-    $input: DeleteSpecialtyInput!
-    $condition: ModelSpecialtyConditionInput
-  ) {
-    deleteSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
-      subSpecialty {
-        items {
-          id
-          name
-          code
-          deleted
-          deletedAt
-          createdAt
-          owner
-        }
-        nextToken
-      }
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const createSubSpecialty = /* GraphQL */ `
-  mutation CreateSubSpecialty(
-    $input: CreateSubSpecialtyInput!
-    $condition: ModelSubSpecialtyConditionInput
-  ) {
-    createSubSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const updateSubSpecialty = /* GraphQL */ `
-  mutation UpdateSubSpecialty(
-    $input: UpdateSubSpecialtyInput!
-    $condition: ModelSubSpecialtyConditionInput
-  ) {
-    updateSubSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
-      deleted
-      deletedAt
-      createdAt
-      owner
-    }
-  }
-`;
-export const deleteSubSpecialty = /* GraphQL */ `
-  mutation DeleteSubSpecialty(
-    $input: DeleteSubSpecialtyInput!
-    $condition: ModelSubSpecialtyConditionInput
-  ) {
-    deleteSubSpecialty(input: $input, condition: $condition) {
-      id
-      name
-      code
       deleted
       deletedAt
       createdAt

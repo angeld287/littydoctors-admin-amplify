@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import useForm from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listSpecialtys } from '../../../graphql/custom-queries';
-import { getSubSpecialty } from '../../../graphql/queries';
-import { updateSubSpecialty } from '../../../graphql/mutations';
+import { listSpecialitys } from '../../../graphql/custom-queries';
+import { getSubSpeciality } from '../../../graphql/queries';
+import { updateSubSpeciality } from '../../../graphql/mutations';
 import Swal from 'sweetalert2';
 
-const useEditSubSpecialty = () => {
+const useEditSubSpeciality = () => {
 	let history = useHistory();
 	let { id } = useParams();
 	const [ item, setItem ] = useState({});
@@ -28,13 +28,13 @@ const useEditSubSpecialty = () => {
 				var _specialities = {};
 
 				try {
-					spec = await API.graphql(graphqlOperation(listSpecialtys, {limit: 400}));
-					api = await API.graphql(graphqlOperation(getSubSpecialty, { id }));
+					spec = await API.graphql(graphqlOperation(listSpecialitys, {limit: 400}));
+					api = await API.graphql(graphqlOperation(getSubSpeciality, { id }));
 
-					_specialities = spec.data.listSpecialtys.items;
+					_specialities = spec.data.listSpecialitys.items;
 
 					_specialities.forEach(e => {
-						e.subSpecialty.items.forEach( s => {
+						e.subSpeciality.items.forEach( s => {
 							if (s.id === id) {
 								_speciality = {value: e.id, label: e.name};
 								setSpeciality(_speciality);
@@ -42,7 +42,7 @@ const useEditSubSpecialty = () => {
 						});
 					});
 					
-					spec.data.listSpecialtys.items.forEach(element => {
+					spec.data.listSpecialitys.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_spec.push(item);
 					});
@@ -52,7 +52,7 @@ const useEditSubSpecialty = () => {
 				}
 
 				if (!didCancel) {
-					setItem(api.data.getSubSpecialty);
+					setItem(api.data.getSubSpeciality);
 					setSpecialities(_spec);
 					setSpeciality(_speciality);
 				}
@@ -76,9 +76,9 @@ const useEditSubSpecialty = () => {
 		input.id = id;
 
 		try {
-			await API.graphql(graphqlOperation(updateSubSpecialty, { input: {id: id, name: input.name, code: input.code, specialtySubSpecialtyId: speciality.value } }));
+			await API.graphql(graphqlOperation(updateSubSpeciality, { input: {id: id, name: input.name, code: input.code, SpecialitySubSpecialityId: speciality.value } }));
 			await Swal.fire('Correcto', 'El elemento se ha actualizado correctamente', 'success');
-			history.push('/subspecialtys');
+			history.push('/subSpecialitys');
 		} catch (e) {
 			Swal.fire('Ha ocurrido un error', 'Intentelo nuevamente', 'error');
 		}
@@ -87,4 +87,4 @@ const useEditSubSpecialty = () => {
 	return { onSubmit, item, register, handleSubmit, errors, error, specialities, speciality, setSpeciality  };
 };
 
-export default useEditSubSpecialty;
+export default useEditSubSpeciality;

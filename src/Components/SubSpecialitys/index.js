@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import useSubSpecialtys from './useSubSpecialtys';
+import useSubSpecialitys from './useSubSpecialitys';
 import { Link } from 'react-router-dom';
 import { MDBContainer, MDBBox, MDBDataTable, MDBBtn, MDBSpinner, MDBRow } from 'mdbreact';
 
 import './index.css';
 
-const SubSpecialtys = () => {
-	const { items, error, loading, handleDelete } = useSubSpecialtys();
+const SubSpecialitys = () => {
+	const { items, error, loading, handleDelete } = useSubSpecialitys();
 
 	const data = () => {
 		var formated = [];
@@ -16,7 +16,7 @@ const SubSpecialtys = () => {
 				code: item.code,
 				options: (
 					<Fragment>
-						<Link to={`subspecialtys/${item.id}/edit`} className="btn btn-success btn-sm">
+						<Link to={`subspecialitys/${item.id}/edit`} className="btn btn-success btn-sm">
 							Editar
 						</Link>
 						<MDBBtn color="red" size="sm" onClick={() => handleDelete(item.id)}>
@@ -63,7 +63,7 @@ const SubSpecialtys = () => {
 
 	return (
 		<MDBContainer>
-			<Link to={`subspecialtys/new`} className="btn btn-primary btn-sm">
+			<Link to={`subspecialitys/new`} className="btn btn-primary btn-sm">
 				Crear
 			</Link>
 			<MDBDataTable
@@ -87,4 +87,4 @@ const SubSpecialtys = () => {
 	);
 };
 
-export default SubSpecialtys;
+export default SubSpecialitys;

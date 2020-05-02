@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { listSubSpecialtys } from '../../graphql/queries';
+import { listSubSpecialitys } from '../../graphql/queries';
 import Swal from 'sweetalert2';
-import { deleteSubSpecialty } from '../../graphql/mutations';
+import { deleteSubSpeciality } from '../../graphql/mutations';
 
-const useSubSpecialtys = () => {
+const useSubSpecialitys = () => {
 	const [ items, setItems ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 	const [ error, setError ] = useState(false);
@@ -16,14 +16,14 @@ const useSubSpecialtys = () => {
 			var api = [];
 
 			try {
-				api = await API.graphql(graphqlOperation(listSubSpecialtys));
+				api = await API.graphql(graphqlOperation(listSubSpecialitys));
 			} catch (error) {
 				setLoading(false);
 				setError(true);
 			}
 
 			if (!didCancel) {
-				setItems(api.data.listSubSpecialtys.items);
+				setItems(api.data.listSubSpecialitys.items);
 				setLoading(false);
 			}
 		};
@@ -52,7 +52,7 @@ const useSubSpecialtys = () => {
 
 		if (result.value) {
 			try {
-				await API.graphql(graphqlOperation(deleteSubSpecialty, { input }));
+				await API.graphql(graphqlOperation(deleteSubSpeciality, { input }));
 				Swal.fire('Eliminado correctamente!', '', 'success');
 				setItems(items.filter((item) => item.id !== id));
 			} catch (error) {
@@ -64,4 +64,4 @@ const useSubSpecialtys = () => {
 	return { items, error, loading, handleDelete };
 };
 
-export default useSubSpecialtys;
+export default useSubSpecialitys;
