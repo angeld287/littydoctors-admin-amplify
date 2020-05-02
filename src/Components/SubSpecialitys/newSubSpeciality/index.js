@@ -64,7 +64,7 @@ const NewSubSpeciality = () => {
 										type="submit"
 										disabled={formState.isSubmitting}
 									>
-										Agregar
+										Agregarss
 									</MDBBtn>
 								</div>
 							</form>

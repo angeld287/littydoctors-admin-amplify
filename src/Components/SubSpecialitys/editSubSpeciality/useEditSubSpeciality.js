@@ -76,7 +76,7 @@ const useEditSubSpeciality = () => {
 		input.id = id;
 
 		try {
-			await API.graphql(graphqlOperation(updateSubSpeciality, { input: {id: id, name: input.name, code: input.code, SpecialitySubSpecialityId: speciality.value } }));
+			await API.graphql(graphqlOperation(updateSubSpeciality, { input: {id: id, name: input.name, code: input.code, specialitySubSpecialityId: speciality.value } }));
 			await Swal.fire('Correcto', 'El elemento se ha actualizado correctamente', 'success');
 			history.push('/subSpecialitys');
 		} catch (e) {

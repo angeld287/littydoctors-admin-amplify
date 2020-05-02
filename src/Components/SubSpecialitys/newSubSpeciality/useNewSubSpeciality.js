@@ -58,10 +58,12 @@ const useNewSubSpeciality = () => {
 			return
 		}
 		try {
-			await API.graphql(graphqlOperation(createSubSpeciality, { input: {name: input.name, code: input.code, SpecialitySubSpecialityId: speciality.value } }));
+			await API.graphql(graphqlOperation(createSubSpeciality, { input: {name: input.name, code: input.code, specialitySubSpecialityId: speciality.value } }));
 			await Swal.fire('Correcto', 'El elemento se ha creado correctamente', 'success');
 			history.push('/subspecialitys');
 		} catch (error) {
+			console.log(error);
+			
 			Swal.fire('Ha ocurrido un error', 'Intentelo de nuevo mas tarde', 'error');
 		}
 	};
