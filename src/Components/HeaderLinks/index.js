@@ -38,6 +38,7 @@ export default class HeaderLinks extends Component {
           {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('religions')}}>Religiones</button></li>}
           {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('specialitys')}}>Especialidades</button></li>}
           {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('subspecialitys')}}>Sub - Especialidades</button></li>}
+          {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('subspecialityssecond')}}>Sub - Especialidades 2</button></li>}
           {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('fields')}}>Campos</button></li>}
           {this.props.childProps.state.user_roll === 'admin' && <li style={{display: 'inline'}}><button onClick={ (e) => {e.preventDefault(); this.redirectTo('termsconditions')}}>Terminos y Condiciones</button></li>}
           {!this.props.childProps.isLoggedIn && <li style={{display: 'inline'}}><button onClick={this.redirectSignIn}>LogIn</button></li>}

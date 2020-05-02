@@ -269,3 +269,30 @@ export const listSpecialitys = /* GraphQL */ `
     }
   }
 `;
+
+export const listSubSpecialitys = /* GraphQL */ `
+  query ListSubSpecialitys(
+    $filter: ModelSubSpecialityFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubSpecialitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        code
+        subSpeciality {
+          items{
+            id
+            name
+          }
+        }
+        deleted
+        deletedAt
+        createdAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

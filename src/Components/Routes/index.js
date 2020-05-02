@@ -54,6 +54,11 @@ import SubSpecialitys from '../SubSpecialitys';
 import NewSubSpeciality from '../SubSpecialitys/newSubSpeciality';
 import EditSubSpeciality from '../SubSpecialitys/editSubSpeciality';
 
+//subspecialityssecond
+import SubSpecialitysSecond from '../SubSpecialitySecond';
+import NewSubSpecialitySecond from '../SubSpecialitySecond/newSubSpecialitySecond';
+import EditSubSpecialitySecond from '../SubSpecialitySecond/editSubSpecialitySecond';
+
 //fields
 import Fields from '../Fields';
 import NewField from '../Fields/newField';
@@ -94,6 +99,9 @@ export const Routes = ({ childProps }) => (
     <ProtectedRouteAdmin exact path="/subspecialitys" render={SubSpecialitys} props={childProps} />
     <ProtectedRouteAdmin exact path="/subspecialitys/new" render={NewSubSpeciality} props={childProps} />
     <ProtectedRouteAdmin exact path="/subspecialitys/:id/edit" render={EditSubSpeciality} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialityssecond" render={SubSpecialitysSecond} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialityssecond/new" render={NewSubSpecialitySecond} props={childProps} />
+    <ProtectedRouteAdmin exact path="/subspecialityssecond/:id/edit" render={EditSubSpecialitySecond} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields" render={Fields} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/new" render={NewField} props={childProps} />
     <ProtectedRouteAdmin exact path="/fields/:id/edit" render={EditField} props={childProps} />
