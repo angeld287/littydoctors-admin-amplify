@@ -3,7 +3,7 @@ import useForm from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createField } from '../../../graphql/mutations';
-import { listMedicalAnalysiss, listSpecialitys } from '../../../graphql/queries';
+import { listMedicalAnalysiss, listSpecialitys, listSubSpecialitys, listSubSpecialitySeconds } from '../../../graphql/queries';
 import Swal from 'sweetalert2';
 
 const useNewField = () => {
@@ -20,11 +20,15 @@ const useNewField = () => {
 			const fetch = async () => {
 				var _analysis = [];
 				var _specialties = [];
+				var _ss = [];
+				var _sss = [];
 				var _codes = [];
 
 				try {
 					_analysis = await API.graphql(graphqlOperation(listMedicalAnalysiss, {limit: 400}));
 					_specialties = await API.graphql(graphqlOperation(listSpecialitys, {limit: 400}));
+					_ss = await API.graphql(graphqlOperation(listSubSpecialitys, {limit: 400}));
+					_sss = await API.graphql(graphqlOperation(listSubSpecialitySeconds, {limit: 400}));
 
 					_analysis.data.listMedicalAnalysiss.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
@@ -32,6 +36,16 @@ const useNewField = () => {
 					});
 
 					_specialties.data.listSpecialitys.items.forEach(element => {
+						var item = {value: element.id, label: element.name};
+						_codes.push(item);
+					});
+
+					_ss.data.listSubSpecialitys.items.forEach(element => {
+						var item = {value: element.id, label: element.name};
+						_codes.push(item);
+					});
+
+					_sss.data.listSubSpecialitySeconds.items.forEach(element => {
 						var item = {value: element.id, label: element.name};
 						_codes.push(item);
 					});
